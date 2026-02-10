@@ -7,10 +7,13 @@ OUTPUT_FILENAME = "LegacyGram.py"
 SRC_DIR = "LegacyGram"
 
 PRIORITY_FILES = ["header.py"]
-PRIORITY_DIRS = ["utils"]
+PRIORITY_DIRS = ["i18n", "utils"]
 LAST_FILES = ["ui/settings.py","main.py"]
 
-COPYRIGHT_STRING = "# LegacyGram plugin created by @wepinek \n"
+COPYRIGHT_STRING = ("# Open Source LegacyGram plugin for https://exteragram.app\n"
+                    "# Plugin created by t.me/wepinek\n"
+                    "# Licensed under the MIT License\n"
+                    "# Repository: https://github.com/repinek/LegacyGram\n")
 
 def build():
     if not os.path.exists(DIST_DIR):
