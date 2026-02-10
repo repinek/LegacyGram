@@ -10,6 +10,7 @@ from features.settings_menu import register_settings_menu
 from features.media_layout import register_media_layout
 from typing import Optional
 
+
 class LegacyGramPlugin(BasePlugin):
     _instance: Optional['LegacyGramPlugin'] = None
 

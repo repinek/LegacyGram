@@ -3,6 +3,8 @@ from typing import List, Any
 from android.view import View
 from LegacyGram.utils.extera_utils import open_extera_setting
 from LegacyGram.main import LegacyGramPlugin
+from LegacyGram.utils.version_utils import get_client_version
+
 
 def get_general_sub_page() -> List[Any]:
     return [
@@ -71,7 +73,11 @@ def get_gifts_sub_page() -> List[Any]:
     ]
 
 def get_about_sub_page() -> List[Any]:
-    ...
+    return [
+        Text(
+            text=get_client_version()
+        ),
+    ]
 
 def get_main_settings_list() -> List[Any]:
     return [
