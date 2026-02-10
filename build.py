@@ -1,6 +1,7 @@
 import os
 
 # yes I videcoded this but works fine lol
+# TODO uv version <version from header>
 
 DIST_DIR = "dist"
 OUTPUT_FILENAME = "LegacyGram.py"

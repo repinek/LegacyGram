@@ -1,8 +1,8 @@
 [project]
 name = "LegacyGram"
-version = "1.0.0" # We are not using that
+version = "0.0.9" # We are not using that
 description = "A highly customizable plugin to remove paid and bloated features from Telegram"
-requires-python = ">=3.14"
+requires-python = "==3.11.*"
 authors = [
     { name = "repinek" }
 ]
