@@ -1,6 +1,5 @@
 from ui.settings import Header, Input, Divider, Switch, Selector, Text, EditText
 from typing import List, Any
-from base_plugin import BasePlugin
 from android.view import View
 from LegacyGram.utils.extera_utils import open_extera_setting
 from LegacyGram.main import LegacyGramPlugin
