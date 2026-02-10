@@ -4,7 +4,7 @@ from android_utils import log
 from typing import List, Any, Optional
 from hook_utils import find_class, set_private_field, get_private_field
 from ui.bulletin import BulletinHelper
-from java import jint, jfloat
+from java import jint, jfloat, jboolean
 from android.view import View
 
 __name__ = "LegacyGram"
@@ -13,7 +13,7 @@ __version__ = "0.0.8"
 __id__ = "legacygram"
 __author__ = "@wepinek"
 __icon__ = "LegacyGram/0"
-__min_version__ = "12.1.1"
+__min_version__ = "12.1.1" # TODO: should be lower
 
 """
 TODO:
@@ -21,6 +21,7 @@ remove premium emoji in nickname
 remove profile colors in Profile (already implemented in replies via Extera)
 remove some bulletins? 
 localization (normal eng and ru)
+take etg icon from current icon pack if exist
 
 project stuff TODO:
 configure ruff and toml file

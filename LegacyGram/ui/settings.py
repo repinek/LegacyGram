@@ -2,8 +2,8 @@ from ui.settings import Header, Input, Divider, Switch, Selector, Text, EditText
 from typing import List, Any
 from base_plugin import BasePlugin
 from android.view import View
-from utils.extera_utils import open_extera_setting
-from main import LegacyGramPlugin
+from LegacyGram.utils.extera_utils import open_extera_setting
+from LegacyGram.main import LegacyGramPlugin
 
 def get_general_sub_page() -> List[Any]:
     return [
@@ -31,6 +31,14 @@ def get_premium_sub_page() -> List[Any]:
         Header(text="Chat List"),
         Text(text="Hide Stories", icon="etg_settings", on_click=open_extera_tab("hideStories")),
         Text(text="Hide Status", icon="etg_settings", on_click=open_extera_tab("hideActionBarStatus")),
+
+        Header(text="Profile Tabs"),
+        Switch(
+            key="stories_tab_in_profile",
+            text="Disable Stories Tab in Profile",
+            default=False,
+            link_alias="stories_tab_in_profile"
+        ),
     ]
 
 def get_gifts_sub_page() -> List[Any]:

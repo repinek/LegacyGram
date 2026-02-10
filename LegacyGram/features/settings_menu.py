@@ -1,20 +1,10 @@
 from base_plugin import MethodHook
 from hook_utils import find_class, set_private_field, get_private_field
 from java import jint
-from android_utils import log
 from typing import List, Any
 from ui.bulletin import BulletinHelper
 
-# ROWS = [
-#     "premiumRow",
-#     "starsRow",
-#     "tonRow",
-#     "businessRow",
-#     "premiumGiftingRow",
-#     "premiumSectionsRow" # Just a spacing
-#     # "botStarsBalanceRow",
-#     # "botTonBalanceRow",
-# ]
+# TODO: refactor
 
 class SettingsMenuCleanupHook(MethodHook):
     def __init__(self, plugin):
@@ -82,7 +72,7 @@ class SettingsMenuCleanupHook(MethodHook):
             BulletinHelper.show_error(f"Error in settings menu cleanup: {e}")
 
 
-def register_settings_menu_cleanup(plugin) -> None:
+def register_settings_menu(plugin) -> None:
     ProfileActivityClass = find_class("org.telegram.ui.ProfileActivity")
     if ProfileActivityClass:
         plugin.hook_all_methods(ProfileActivityClass, "updateRowsIds", SettingsMenuCleanupHook(plugin))

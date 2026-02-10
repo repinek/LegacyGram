@@ -8,7 +8,7 @@ SRC_DIR = "LegacyGram"
 
 PRIORITY_FILES = ["header.py"]
 PRIORITY_DIRS = ["utils"]
-LAST_FILES = ["settings.py","main.py"]
+LAST_FILES = ["ui/settings.py","main.py"]
 
 COPYRIGHT_STRING = "# LegacyGram plugin created by @wepinek \n"
 

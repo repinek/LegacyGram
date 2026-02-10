@@ -1,12 +1,13 @@
 from typing import List, Any
 from ui.bulletin import BulletinHelper
 from base_plugin import BasePlugin
-from settings import get_main_settings_list
-from features.remove_gift_button import register_remove_gift_button
-from features.settings_menu_cleanup import register_settings_menu_cleanup
-from features.remove_gifts_tab import register_remove_gifts_tab
-from features.action_bar import register_remove_gift_button
-from features.star_rating_view import register_star_rating_hook
+
+from LegacyGram.features.gift_button import register_gift_button
+from LegacyGram.ui.settings import get_main_settings_list
+from features.action_bar import register_action_bar
+from features.star_rating import register_star_rating
+from features.settings_menu import register_settings_menu
+from features.media_layout import register_media_layout
 from typing import Optional
 
 class LegacyGramPlugin(BasePlugin):
@@ -15,22 +16,21 @@ class LegacyGramPlugin(BasePlugin):
     def on_plugin_load(self) -> None:
         LegacyGramPlugin._instance = self
         self.register_hooks()
-        BulletinHelper.show_info("Plugin loaded!")
-
+        BulletinHelper.show_info("LegacyGram loaded!") # debug
 
     def create_settings(self) -> List[Any]:
         return get_main_settings_list()
 
     def register_hooks(self) -> None:
-        register_remove_gift_button(self)
-        register_remove_gifts_tab(self)
-        register_settings_menu_cleanup(self)
-        register_remove_gift_button(self)
-        register_star_rating_hook(self)
+        register_action_bar(self)
+        register_star_rating(self)
+        register_media_layout(self)
+        register_settings_menu(self)
+        register_gift_button(self)
 
     @classmethod
     def get_instance(cls) -> 'LegacyGramPlugin':
         if cls._instance is None:
-            raise RuntimeError("LegacyGramPlugin is not loaded yet!")
+            BulletinHelper.show_error("Error while getting LegacyGramPlugin Instance!")
         return cls._instance
 
