@@ -70,6 +70,9 @@ def get_gifts_sub_page() -> List[Any]:
         )
     ]
 
+def get_about_sub_page() -> List[Any]:
+    ...
+
 def get_main_settings_list() -> List[Any]:
     return [
         Header(text="Setting related to..."),
@@ -90,7 +93,14 @@ def get_main_settings_list() -> List[Any]:
             icon="msg_input_gift",
             create_sub_fragment=get_gifts_sub_page,
             link_alias="gifts_sub_page_link"
-        )
+        ),
+        Divider(),
+        Text(
+            text="About Plugin",
+            icon="", # TODO
+            create_sub_fragment=get_about_sub_page,
+            link_alias="about_plugin"
+        ),
     ]
 
 # helper functions
