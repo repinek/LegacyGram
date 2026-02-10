@@ -9,7 +9,7 @@ from android.view import View
 
 __name__ = "LegacyGram"
 __description__ = "A highly customizable plugin to remove paid and bloated features from Telegram"
-__version__ = "0.0.8"
+__version__ = "0.0.9"
 __id__ = "legacygram"
 __author__ = "@wepinek"
 __icon__ = "LegacyGram/0"
