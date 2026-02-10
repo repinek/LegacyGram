@@ -1,7 +1,7 @@
 from base_plugin import BasePlugin, MethodHook, MethodReplacement
 from ui.settings import Header, Input, Divider, Switch, Selector, Text, EditText
 from android_utils import log
-from typing import List, Any
+from typing import List, Any, Optional
 from hook_utils import find_class, set_private_field, get_private_field
 from ui.bulletin import BulletinHelper
 from java import jint, jfloat
@@ -24,6 +24,6 @@ localization (normal eng and ru)
 
 project stuff TODO:
 configure ruff and toml file
-do normal import instead this
+do normal import instead this (building)
 android and java typings? I don't see any
 """

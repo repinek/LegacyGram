@@ -3,27 +3,34 @@ from typing import List, Any
 from base_plugin import BasePlugin
 from android.view import View
 from utils.extera_utils import open_extera_setting
-
-# TODO: make it class ??
-plugin_instance: BasePlugin
+from main import LegacyGramPlugin
 
 def get_general_sub_page() -> List[Any]:
     return [
-        Header(text="Settings Menu Rows Cleanup"),
+        Header(text="Settings Options"),
         Text(text="Switch All", on_click=switch_rows, link_alias="switch_rows"),
         Switch(key="hide_premium_row", text="Hide Telegram Premium", default=False, link_alias="hide_premium_row"),
         Switch(key="hide_stars_row", text="Hide My stars", default=False, link_alias="hide_stars_row"),
         Switch(key="hide_ton_row", text="Hide My TON", default=False, link_alias="hide_ton_row"),
         Switch(key="hide_business_row", text="Hide Telegram Business", default=False, link_alias="hide_business_row"),
         Switch(key="hide_send_gift_row", text="Hide Send a Gift", default=False, link_alias="hide_send_gift_row"),
+
+        Header(text="Drawer Options"),
+        Text(text="Manage Drawer Options", icon="etg_settings", on_click=open_extera_tab("drawerSettings")),
     ]
 
 def get_premium_sub_page() -> List[Any]:
     return [
         # Header(text="This is a Sub-Page with functions related to Premium"),
         Header(text="Profile Color"),
-        Text(text="Manage Reply Elements", icon="", on_click=open_reply_tab), # TODO: extera icon
-        Divider(text="Powered by exteraGram")
+        Text(text="Manage Reply Elements", icon="etg_settings", on_click=open_extera_tab("replyElements")),
+
+        Header(text="Voice-to-Text Conversion"),
+        Text(text="Manage Voice-to-Text Conversion", icon="etg_settings", on_click=open_extera_tab("recognitionLanguage")),
+
+        Header(text="Chat List"),
+        Text(text="Hide Stories", icon="etg_settings", on_click=open_extera_tab("hideStories")),
+        Text(text="Hide Status", icon="etg_settings", on_click=open_extera_tab("hideActionBarStatus")),
     ]
 
 def get_gifts_sub_page() -> List[Any]:
@@ -56,9 +63,7 @@ def get_gifts_sub_page() -> List[Any]:
         )
     ]
 
-def get_main_settings_list(plugin: BasePlugin) -> List[Any]:
-    global plugin_instance
-    plugin_instance = plugin
+def get_main_settings_list() -> List[Any]:
     return [
         Header(text="Setting related to..."),
         Text(
@@ -83,7 +88,7 @@ def get_main_settings_list(plugin: BasePlugin) -> List[Any]:
 
 # helper functions
 def switch_rows(view: View) -> None :
-    global plugin_instance
+    plugin_instance = LegacyGramPlugin.get_instance()
     row_keys = [
         "hide_premium_row",
         "hide_stars_row",
@@ -98,5 +103,8 @@ def switch_rows(view: View) -> None :
     for key in row_keys:
          plugin_instance.set_setting(key, new_state, reload_settings=True)
 
-def open_reply_tab(view: View) -> None:
-    open_extera_setting("replyElements")
+# lambda works too, but It's better
+def open_extera_tab(tab_name: str):
+    def callback(view: View):
+        open_extera_setting(tab_name)
+    return callback
