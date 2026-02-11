@@ -93,7 +93,7 @@ def parse_import_line(line: str):
     import_match = re.match(r"^import ([\w.]+)$", line)
     if import_match:
         module = import_match.group(1)
-        captured_imports[module] = None
+        _ = captured_imports[module]
 
 
 def generate_imports_block() -> str:
