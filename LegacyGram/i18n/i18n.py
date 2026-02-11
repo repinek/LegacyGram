@@ -1,7 +1,9 @@
 from hook_utils import find_class
+
 from LegacyGram.i18n.locales import STRINGS
 
 _cached_lang: str | None = None
+
 
 def get_system_language() -> str:
     global _cached_lang
@@ -15,6 +17,7 @@ def get_system_language() -> str:
 
     return _cached_lang
 
+
 def i(key: str) -> str:
     lang = get_system_language()
     target_locale = STRINGS.get(lang, STRINGS.get("en", {}))
@@ -23,5 +26,3 @@ def i(key: str) -> str:
         result = f"MISSING: {key}"
 
     return result
-
-

@@ -1,8 +1,9 @@
 from hook_utils import find_class
 from ui.bulletin import BulletinHelper
 
+
 # thx jadx
-def open_extera_setting(alias: str, plugin_id: str = None):
+def open_extera_setting(alias: str, plugin_id: str | None = None):
     SettingsRegistry = find_class("com.exteragram.messenger.preferences.utils.SettingsRegistry")
 
     if SettingsRegistry:

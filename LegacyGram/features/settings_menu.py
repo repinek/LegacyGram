@@ -1,16 +1,18 @@
+from typing import Any
+
 from base_plugin import MethodHook
-from hook_utils import find_class, set_private_field, get_private_field
+from hook_utils import find_class, get_private_field, set_private_field
 from java import jint
-from typing import List, Any
 from ui.bulletin import BulletinHelper
 
 # TODO: refactor
+
 
 class SettingsMenuCleanupHook(MethodHook):
     def __init__(self, plugin):
         self.plugin = plugin
 
-    def check_settings(self) -> List[Any]:
+    def check_settings(self) -> list[Any]:
         rows_to_remove = []
         if self.plugin.get_setting("hide_premium_row", False):
             rows_to_remove.append("premiumRow")
@@ -45,7 +47,6 @@ class SettingsMenuCleanupHook(MethodHook):
                 target_index = get_private_field(activity, row_name)
 
                 if target_index is not None and target_index != -1:
-
                     rows_removed += 1
                     set_private_field(activity, row_name, jint(-1))
 
@@ -53,7 +54,7 @@ class SettingsMenuCleanupHook(MethodHook):
                         if field.getType().toString() == "int":
                             field.setAccessible(True)
 
-                            if field.getModifiers() & 8: # skip statics
+                            if field.getModifiers() & 8:  # skip statics
                                 continue
 
                             try:
@@ -61,7 +62,7 @@ class SettingsMenuCleanupHook(MethodHook):
 
                                 if target_index < current_val < row_count:
                                     field.setInt(activity, jint(current_val - 1))
-                            except:
+                            except Exception:
                                 pass
                     row_count -= 1
 

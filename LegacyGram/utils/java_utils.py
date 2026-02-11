@@ -12,6 +12,7 @@ def get_client_version() -> str:
 
     return "Unknown"
 
+
 def open_url(url: str):
     try:
         ApplicationLoader = find_class("org.telegram.messenger.ApplicationLoader")
@@ -19,7 +20,7 @@ def open_url(url: str):
 
         Browser = find_class("org.telegram.messenger.browser.Browser")
         if Browser:
-            # or we can use openUrlInSystemBrowser, 
+            # or we can use openUrlInSystemBrowser,
             Browser.openUrl(context, url)
     except Exception as e:
         BulletinHelper.show_error(f"Failed to open url {url}: {e}")

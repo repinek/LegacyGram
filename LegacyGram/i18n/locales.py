@@ -1,6 +1,1 @@
-STRINGS = {
-    "ru": {
-    },
-    "en": {
-    }
-}
+STRINGS = {"ru": {}, "en": {}}
