@@ -1,5 +1,5 @@
 from base_plugin import BasePlugin, MethodHook, MethodReplacement
-from ui.settings import Header, Input, Divider, Switch, Selector, Text, EditText
+from ui.settings import Header, Divider, Text
 from android_utils import log
 from typing import List, Any, Optional
 from hook_utils import find_class, set_private_field, get_private_field
@@ -25,7 +25,7 @@ take etg icon from current icon pack if exist
 add About Plugin page
 
 project stuff TODO:
-configure ruff and toml file
+configure ruff
 do normal import instead this (building)
-android and java typings? I don't see any
+version stuff in toml (building)
 """

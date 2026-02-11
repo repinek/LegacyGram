@@ -1,20 +1,21 @@
-from ui.settings import Header, Input, Divider, Switch, Selector, Text, EditText
-from typing import List, Any
+from ui.settings import Header, Divider, Text
+from typing import List, Any, Callable
 from android.view import View
 from LegacyGram.utils.extera_utils import open_extera_setting
 from LegacyGram.main import LegacyGramPlugin
 from LegacyGram.utils.java_utils import get_client_version, open_url
 from LegacyGram.data.constants import GITHUB_URL
+from LegacyGram.utils.settings_utils import Switch
 
 def get_general_sub_page() -> List[Any]:
     return [
         Header(text="Settings Options"),
         Text(text="Switch All", on_click=switch_rows, link_alias="switch_rows"),
-        Switch(key="hide_premium_row", text="Hide Telegram Premium", default=False, link_alias="hide_premium_row"),
-        Switch(key="hide_stars_row", text="Hide My stars", default=False, link_alias="hide_stars_row"),
-        Switch(key="hide_ton_row", text="Hide My TON", default=False, link_alias="hide_ton_row"),
-        Switch(key="hide_business_row", text="Hide Telegram Business", default=False, link_alias="hide_business_row"),
-        Switch(key="hide_send_gift_row", text="Hide Send a Gift", default=False, link_alias="hide_send_gift_row"),
+        Switch(key="hide_premium_row", text="Hide Telegram Premium"),
+        Switch(key="hide_stars_row", text="Hide My stars"),
+        Switch(key="hide_ton_row", text="Hide My TON"),
+        Switch(key="hide_business_row", text="Hide Telegram Business"),
+        Switch(key="hide_send_gift_row", text="Hide Send a Gift"),
 
         Header(text="Drawer Options"),
         Text(text="Manage Drawer Options", icon="etg_settings", on_click=open_extera_tab("drawerSettings")),
@@ -33,9 +34,7 @@ def get_premium_sub_page() -> List[Any]:
         Header(text="Profile Tabs"),
         Switch(
             key="stories_tab_in_profile",
-            text="Disable Stories Tab in Profile",
-            default=False,
-            link_alias="stories_tab_in_profile"
+            text="Disable Stories Tab in Profile"
         ),
     ]
 
@@ -46,26 +45,18 @@ def get_gifts_sub_page() -> List[Any]:
         Switch(
             key="gift_button_in_chats",
             text="Disable Gift Button in Chats",
-            default=False,
-            link_alias="gift_button_in_chats"
         ),
         Switch(
             key="gifts_tab_in_profile",
             text="Disable Gifts Tab in Profile",
-            default=False,
-            link_alias="gifts_tab_in_profile"
         ),
         Switch(
             key="stars_rating_in_profile",
             text="Disable Stars Rating in Profile",
-            default=False,
-            link_alias="stars_rating_in_profile"
         ),
         Switch(
             key="send_gift_action_bar_in_profile",
             text="Disable Send Gift button from Action Bar",
-            default=False,
-            link_alias="send_gift_action_bar_in_profile"
         )
     ]
 
@@ -128,12 +119,12 @@ def switch_rows(view: View) -> None :
          plugin_instance.set_setting(key, new_state, reload_settings=True)
 
 # lambda works too, but It's better
-def open_extera_tab(tab_name: str):
+def open_extera_tab(tab_name: str) -> Callable[[View], None]:
     def callback(view: View):
         open_extera_setting(tab_name)
     return callback
 
-def open_url_view(url: str):
+def open_url_view(url: str) -> Callable[[View], None]:
     def callback(view: View):
         open_url(url)
     return callback
