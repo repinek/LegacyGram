@@ -26,9 +26,6 @@ def get_premium_sub_page() -> List[Any]:
         Header(text="Profile Color"),
         Text(text="Manage Reply Elements", icon="etg_settings", on_click=open_extera_tab("replyElements")),
 
-        Header(text="Voice-to-Text Conversion"),
-        Text(text="Manage Voice-to-Text Conversion", icon="etg_settings", on_click=open_extera_tab("recognitionLanguage")),
-
         Header(text="Chat List"),
         Text(text="Hide Stories", icon="etg_settings", on_click=open_extera_tab("hideStories")),
         Text(text="Hide Status", icon="etg_settings", on_click=open_extera_tab("hideActionBarStatus")),
