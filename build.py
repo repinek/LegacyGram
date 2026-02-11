@@ -8,8 +8,8 @@ OUTPUT_FILENAME = "LegacyGram.py"
 SRC_DIR = "LegacyGram"
 
 PRIORITY_FILES = ["header.py"]
-PRIORITY_DIRS = ["i18n", "utils"]
-LAST_FILES = ["ui/settings.py","main.py"]
+PRIORITY_DIRS = ["data", "i18n", "utils"]
+LAST_FILES = ["ui/settings.py", "main.py"]
 
 COPYRIGHT_STRING = ("# Open Source LegacyGram plugin for https://exteragram.app\n"
                     "# Plugin created by t.me/wepinek\n"
@@ -46,7 +46,12 @@ def build():
 
     for dir_name in PRIORITY_DIRS:
         prefix = dir_name.strip("/") + "/"
-        dir_files = [f for f in all_files if (f.startswith(prefix) or f == dir_name) and f not in files_to_process]
+        dir_files = [
+            file_name for file_name in all_files
+            if (file_name.startswith(prefix) or file_name == dir_name)
+               and file_name not in files_to_process
+               and os.path.basename(file_name) != "__init__.py"
+        ]
         if dir_files:
             dir_files.sort()
             files_to_process.extend(dir_files)
