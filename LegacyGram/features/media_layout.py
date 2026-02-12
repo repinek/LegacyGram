@@ -1,6 +1,7 @@
 from hook_utils import find_class, get_private_field, set_private_field
 from java import jint
 
+from LegacyGram.data.constants import Keys
 from LegacyGram.utils.xposed_utils import BaseHook
 
 
@@ -29,9 +30,10 @@ class ProfileStoriesTabHook(BaseHook):
             param.setResult(False)
 
 
+# TODO: fix this, sometimes you can see it when open profile (default page is sets to gifts or posts)
 def register_media_layout(plugin) -> None:
     SharedMediaLayout = find_class("org.telegram.ui.Components.SharedMediaLayout")
     if SharedMediaLayout:
-        plugin.hook_all_methods(SharedMediaLayout, "updateTabs", ProfileGiftsTabHook(plugin, "gifts_tab_in_profile"))
+        plugin.hook_all_methods(SharedMediaLayout, "updateTabs", ProfileGiftsTabHook(plugin, Keys.Gifts.hide_gifts_tab))
 
-        plugin.hook_all_methods(SharedMediaLayout, "includeStories", ProfileStoriesTabHook(plugin, "stories_tab_in_profile"))
+        plugin.hook_all_methods(SharedMediaLayout, "includeStories", ProfileStoriesTabHook(plugin, Keys.Premium.hide_stories_tab))

@@ -5,6 +5,8 @@ from hook_utils import find_class, get_private_field, set_private_field
 from java import jint
 from ui.bulletin import BulletinHelper
 
+from LegacyGram.data.constants import Keys
+
 # TODO: refactor
 
 
@@ -14,15 +16,15 @@ class SettingsMenuCleanupHook(MethodHook):
 
     def check_settings(self) -> list[Any]:
         rows_to_remove = []
-        if self.plugin.get_setting("hide_premium_row", False):
+        if self.plugin.get_setting(Keys.General.hide_premium_row, False):
             rows_to_remove.append("premiumRow")
-        if self.plugin.get_setting("hide_stars_row", False):
+        if self.plugin.get_setting(Keys.General.hide_stars_row, False):
             rows_to_remove.append("starsRow")
-        if self.plugin.get_setting("hide_ton_row", False):
+        if self.plugin.get_setting(Keys.General.hide_ton_row, False):
             rows_to_remove.append("tonRow")
-        if self.plugin.get_setting("hide_business_row", False):
+        if self.plugin.get_setting(Keys.General.hide_business_row, False):
             rows_to_remove.append("businessRow")
-        if self.plugin.get_setting("hide_send_gift_row", False):
+        if self.plugin.get_setting(Keys.General.hide_send_a_gift_row, False):
             rows_to_remove.append("premiumGiftingRow")
         if len(rows_to_remove) == 5:
             rows_to_remove.append("premiumSectionsRow")

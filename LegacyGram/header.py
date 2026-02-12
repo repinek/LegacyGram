@@ -12,8 +12,9 @@ remove premium emoji in nickname
 remove profile colors in Profile (already implemented in replies via Extera)
 remove some bulletins?
 localization (normal eng and ru)
-take etg icon from current icon pack if exist
+take etg icon from current icon pack if exist (check for versions since here new icon pack system)
 add About Plugin page
+remove cached_lang (cuz user can change language without reloading plugins and client)
 
 project stuff TODO:
 version stuff in toml (building)

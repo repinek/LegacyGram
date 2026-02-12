@@ -1,5 +1,6 @@
 from hook_utils import find_class
 
+from LegacyGram.data.constants import Keys
 from LegacyGram.utils.xposed_utils import BaseHook
 
 
@@ -14,4 +15,4 @@ class ProfileStarRatingHook(BaseHook):
 def register_star_rating(plugin):
     StarRatingView = find_class("org.telegram.ui.Components.StarRatingView")
     if StarRatingView:
-        plugin.hook_all_methods(StarRatingView, "set", ProfileStarRatingHook(plugin, "stars_rating_in_profile"))
+        plugin.hook_all_methods(StarRatingView, "set", ProfileStarRatingHook(plugin, Keys.Gifts.hide_stars_rating))
