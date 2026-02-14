@@ -43,7 +43,7 @@ def get_premium_sub_page() -> list[Any]:
             icon="etg_settings",
         ),
         Header(text=t("profile_tabs")),
-        Switch(text=t("hide_stories_tab"), key=Keys.Premium.hide_stories_tab),
+        Switch(text=t("hide_stories_tab"), subtext=t("hide_stories_tab_sub"), key=Keys.Premium.hide_stories_tab),
     ]
 
 
