@@ -2,13 +2,18 @@ from hook_utils import find_class
 
 from LegacyGram.i18n.locales import STRINGS
 
+_Locale = None
+
 
 def get_system_language() -> str:
+    global _Locale
     try:
-        Locale = find_class("java.util.Locale")
-        lang = Locale.getDefault().getLanguage()
-        if lang in STRINGS:
-            return lang
+        if _Locale is None:
+            _Locale = find_class("java.util.Locale")
+        if _Locale:
+            lang = _Locale.getDefault().getLanguage()
+            if lang in STRINGS:
+                return lang
     except Exception:
         pass
 
