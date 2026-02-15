@@ -8,8 +8,8 @@ from LegacyGram.data.constants import GITHUB_URL, Keys
 from LegacyGram.i18n.i18n import t
 from LegacyGram.main import LegacyGramPlugin
 from LegacyGram.utils.extera_utils import open_extera_setting
-from LegacyGram.utils.java_utils import get_client_version, open_url
-from LegacyGram.utils.settings_utils import Switch
+from LegacyGram.utils.settings_utils import Switch, check_version
+from LegacyGram.utils.utils import get_client_version, open_url
 
 
 def get_general_sub_page() -> list[Any]:
@@ -58,8 +58,9 @@ def get_gifts_sub_page() -> list[Any]:
 
 
 def get_about_sub_page() -> list[Any]:
+    is_version_text_red = check_version(get_client_version())
     return [
-        Text(text=t("client_version", get_client_version()), icon="msg_help"),
+        Text(text=t("client_version", get_client_version()), red=is_version_text_red, icon="msg_help"),  # TODO: message about it
         Text(text=t("github_repository"), icon="msg_link", on_click=open_url_view(GITHUB_URL)),
         Divider(text=t("github_info")),
     ]
@@ -76,7 +77,7 @@ def get_main_settings_list() -> list[Any]:
     ]
 
 
-# helper functions
+# helper functions TODO: move to settings_utils
 def switch_rows(view: View) -> None:
     plugin_instance = LegacyGramPlugin.get_instance()
     row_keys = [
