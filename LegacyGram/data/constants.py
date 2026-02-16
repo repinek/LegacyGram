@@ -24,3 +24,4 @@ class Keys:
         hide_gifts_tab = "hideGiftsTab"
         hide_stars_rating = "hideStarsRating"
         hide_action_bar_send_gift = "hideActionBarSendGift"
+        hide_profile_actions_gift_button = "hideProfileActionsGiftButton"

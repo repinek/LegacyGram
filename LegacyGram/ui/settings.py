@@ -54,6 +54,7 @@ def get_gifts_sub_page() -> list[Any]:
         Switch(text=t("hide_gifts_tab"), key=Keys.Gifts.hide_gifts_tab),
         Switch(text=t("hide_stars_rating"), key=Keys.Gifts.hide_stars_rating),
         Switch(text=t("hide_action_bar_send_gift"), key=Keys.Gifts.hide_action_bar_send_gift),
+        Switch(text=t("hide_profile_actions_gift_button"), key=Keys.Gifts.hide_profile_actions_gift_button),
     ]
 
 

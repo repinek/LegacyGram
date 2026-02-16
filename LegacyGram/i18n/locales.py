@@ -37,10 +37,12 @@ STRINGS = {
         "hide_gifts_tab": "Hide Gifts Tab",
         "hide_stars_rating": "Hide Stars Rating",
         "hide_action_bar_send_gift": "Hide Send Gift button from Action Bar",
+        "hide_profile_actions_gift_button": "Hide Gift button from Profile",
 
         # --- About Sub-Page ---
         "client_version": "Client version: {0}",
-        "github_repository": "Github Repository",
+        "client_version_info": "",
+        "github_repository": "Github Repository (Leave a star!)",
         "github_info": "Zero Telemetry, Python modular architecture with custom build script, Ruff linting, and typing stubs for java and android modules",
 
         # --- Main Settings List ---
