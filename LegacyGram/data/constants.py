@@ -12,12 +12,14 @@ class Keys:
         hide_business_row = "hideBusinessRow"
         hide_send_a_gift_row = "hideSendAGiftRow"
         drawer_options = "drawerSettings"  # ETG
+        hide_profile_actions_stream_button = "hideProfileActionsStreamButton"
 
     class Premium:
         reply_elements = "replyElements"  # ETG
         hide_stories = "hideStories"  # ETG
         hide_action_bar_status = "hideActionBarStatus"  # ETG
         hide_stories_tab = "hideStoriesTab"
+        hide_profile_actions_stories_button = "hideProfileActionsStoriesButton"
 
     class Gifts:
         hide_bottom_gift_button = "hideBottomGiftButton"

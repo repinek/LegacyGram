@@ -11,6 +11,8 @@ from LegacyGram.utils.extera_utils import open_extera_setting
 from LegacyGram.utils.settings_utils import Switch, check_version
 from LegacyGram.utils.utils import get_client_version, open_url
 
+# TODO: remove subpages
+
 
 def get_general_sub_page() -> list[Any]:
     return [
@@ -25,6 +27,8 @@ def get_general_sub_page() -> list[Any]:
         Text(
             text=t("manage_drawer_options"), link_alias=Keys.General.drawer_options, on_click=open_extera_tab(Keys.General.drawer_options), icon="etg_settings"
         ),
+        Header(text=t("placeholder")),
+        Switch(text=t("hide_profile_actions_stream_button"), key=Keys.General.hide_profile_actions_stream_button),
     ]
 
 
@@ -44,6 +48,7 @@ def get_premium_sub_page() -> list[Any]:
         ),
         Header(text=t("profile_tabs")),
         Switch(text=t("hide_stories_tab"), subtext=t("hide_stories_tab_sub"), key=Keys.Premium.hide_stories_tab),
+        Switch(text=t("hide_profile_actions_stories_button"), key=Keys.Premium.hide_profile_actions_stories_button),
     ]
 
 
@@ -96,7 +101,7 @@ def switch_rows(view: View) -> None:
         plugin_instance.set_setting(key, new_state, reload_settings=True)
 
 
-# lambda works too, but It's better
+# lambda works too, but It's better TODO: move to utils
 def open_extera_tab(tab_name: str) -> Callable[[View], None]:
     def callback(view: View):
         open_extera_setting(tab_name)
