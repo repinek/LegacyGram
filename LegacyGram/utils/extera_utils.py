@@ -11,14 +11,9 @@ def open_extera_setting(alias: str, plugin_id: str | None = None):
     SettingsRegistry = find_class("com.exteragram.messenger.preferences.utils.SettingsRegistry")
 
     if SettingsRegistry:
-        try:
-            alias = resolve_extera_function(alias)
-            log(alias)
-            registry_instance = SettingsRegistry.getInstance()
-            registry_instance.handleLink(alias, plugin_id)
-
-        except Exception as e:
-            BulletinHelper.show_error(f"Failed to invoke extera handleLink: {e}")
+        alias = resolve_extera_function(alias)
+        registry_instance = SettingsRegistry.getInstance()
+        registry_instance.handleLink(alias, plugin_id)
 
 
 def resolve_extera_function(function_name: str) -> str:
