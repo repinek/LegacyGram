@@ -4,7 +4,7 @@ from ui.settings import Divider, Header, Text
 
 from LegacyGram.data.constants import GITHUB_URL, Keys
 from LegacyGram.i18n.i18n import t
-from LegacyGram.utils.settings_utils import Switch, check_version, open_extera_tab, open_url_view, switch_rows
+from LegacyGram.utils.settings_utils import Switch, check_version, open_extera_tab, open_url_view, open_version_info, switch_rows
 from LegacyGram.utils.utils import get_client_version
 
 
@@ -48,13 +48,13 @@ def get_main_settings_list() -> list[Any]:
             text=t("manage_reply_elements"), link_alias=Keys.Premium.reply_elements, on_click=open_extera_tab(Keys.Premium.reply_elements), icon="etg_settings"
         ),
         #
-        Header(text=t("gifts_header")),
+        Header(text=t("gifts")),
         Switch(text=t("hide_bottom_gift_button"), key=Keys.Gifts.hide_bottom_gift_button),
         Switch(text=t("hide_stars_rating"), key=Keys.Gifts.hide_stars_rating),
         Switch(text=t("hide_action_bar_send_gift"), key=Keys.Gifts.hide_action_bar_send_gift),
         #
         Header(text=t("about_plugin")),
-        Text(text=t("client_version", get_client_version()), red=is_version_text_red, icon="msg_help"),  # TODO: message about it
+        Text(text=t("client_version", get_client_version()), on_click=open_version_info(get_client_version()), red=is_version_text_red, icon="msg_help"),
         Text(text=t("github_repository"), icon="msg_link", on_click=open_url_view(GITHUB_URL)),
-        Divider(text=t("github_info")),
+        Divider(text=t("github_sub")),
     ]

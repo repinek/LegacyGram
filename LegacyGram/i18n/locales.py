@@ -45,7 +45,7 @@ STRINGS = {
         "manage_reply_elements": "Manage Reply Elements",
 
         # --- Gifts Related ---
-        "gifts_header": "Gifts",
+        "gifts": "Gifts",
         "hide_bottom_gift_button": "Hide Gift Button from Input Field",
         "hide_stars_rating": "Hide Stars Rating",
         "hide_action_bar_send_gift": "Hide Send Gift button from Action Bar",
@@ -53,9 +53,13 @@ STRINGS = {
         # --- About Plugin ---
         "about_plugin": "About Plugin",
         "client_version": "Client version: {0}",
-        "client_version_info": "",
+        "version_ok_title": "Full Compatibility",
+        "version_ok_message": "You are using the recommended client version {0}! The last version without \"Liquid Glass UI\" integration",
+        "version_warn_title": "Potential Instability",
+        "version_warn_message": "You are using the client version {0} with new \"Liquid Glass UI\" integration. "
+                                "Plugin still works, but recommended version is 12.1.1",
         "github_repository": "Github Repository (Leave a star!)",
-        "github_info": "Zero Telemetry, Python modular architecture with custom build script, Ruff linting, and typing stubs for java and android modules",
+        "github_sub": "Zero Telemetry, Python modular architecture with custom build script, Ruff linting, and typing stubs for java and android modules",
     }
 }
 # fmt: on

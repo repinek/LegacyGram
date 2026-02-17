@@ -1,10 +1,12 @@
 from collections.abc import Callable
 
 from android.view import View
-from android_utils import log
+from client_utils import get_last_fragment
+from ui.alert import AlertDialogBuilder
 from ui.settings import Switch as BaseSwitch
 
 from LegacyGram.data.constants import Keys
+from LegacyGram.i18n.i18n import t
 from LegacyGram.main import LegacyGramPlugin
 from LegacyGram.utils.extera_utils import open_extera_setting
 from LegacyGram.utils.utils import open_url
@@ -28,7 +30,6 @@ def Switch(
 
 
 def check_version(version: str) -> bool:
-    log(version)
     if version == "12.1.1":
         return False
     return True
@@ -51,7 +52,28 @@ def switch_rows(view: View) -> None:
         plugin_instance.set_setting(key, new_state, reload_settings=True)
 
 
-# lambda works too, but It's better TODO: move to utils
+def open_version_info(version: str) -> Callable[[View], None]:
+    def callback(view: View):
+        current_fragment = get_last_fragment()
+        activity = current_fragment.getParentActivity() if current_fragment else None
+        if not activity:
+            return
+
+        builder = AlertDialogBuilder(activity)
+        if version == "12.1.1":
+            builder.set_title(t("version_ok_title"))
+            builder.set_message(t("version_ok_message", version))
+        else:
+            builder.set_title(t("version_warn_title"))
+            builder.set_message(t("version_warn_message", version))
+
+        builder.set_positive_button("OK", lambda b, w: b.dismiss())
+        builder.show()
+
+    return callback
+
+
+# lambda works too, but It's better
 def open_extera_tab(tab_name: str) -> Callable[[View], None]:
     def callback(view: View):
         open_extera_setting(tab_name)
