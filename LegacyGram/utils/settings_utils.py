@@ -9,7 +9,7 @@ from LegacyGram.data.constants import Keys
 from LegacyGram.i18n.i18n import t
 from LegacyGram.main import LegacyGramPlugin
 from LegacyGram.utils.extera_utils import open_extera_setting
-from LegacyGram.utils.utils import open_url
+from LegacyGram.utils.utils import open_url, parse_version
 
 
 def Switch(
@@ -30,7 +30,7 @@ def Switch(
 
 
 def check_version(version: str) -> bool:
-    if version == "12.1.1":
+    if parse_version(version) == (12, 1, 1):
         return False
     return True
 
@@ -60,7 +60,7 @@ def open_version_info(version: str) -> Callable[[View], None]:
             return
 
         builder = AlertDialogBuilder(activity)
-        if version == "12.1.1":
+        if parse_version(version) == (12, 1, 1):
             builder.set_title(t("version_ok_title"))
             builder.set_message(t("version_ok_message", version))
         else:
