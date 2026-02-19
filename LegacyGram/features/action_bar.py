@@ -7,7 +7,7 @@ from LegacyGram.utils.xposed_utils import BaseHook
 gift_premium = 38
 
 
-class ProfileActionBarHook(BaseHook):
+class ActionBarMenuItemAddSubItemHook(BaseHook):
     def before_hooked_method(self, param):
         if self.is_enabled() and param.args[0] == gift_premium:
             param.setResult(None)
@@ -16,4 +16,4 @@ class ProfileActionBarHook(BaseHook):
 def register_action_bar(plugin) -> None:
     ActionBarMenuItem = find_class("org.telegram.ui.ActionBar.ActionBarMenuItem")
     if ActionBarMenuItem:
-        plugin.hook_all_methods(ActionBarMenuItem, "addSubItem", ProfileActionBarHook(plugin, Keys.Gifts.hide_action_bar_send_gift))
+        plugin.hook_all_methods(ActionBarMenuItem, "addSubItem", ActionBarMenuItemAddSubItemHook(plugin, Keys.Gifts.hide_action_bar_send_gift))

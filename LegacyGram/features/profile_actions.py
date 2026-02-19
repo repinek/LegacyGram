@@ -13,7 +13,7 @@ KEY_STORY = 12
 # calls from Insert if insertIfNotAvailable
 # set(int key, boolean enabled)
 # getOrCreate(List<Action> list, int key)
-class ProfileActionsHook(BaseHook):
+class ProfileActionsViewHook(BaseHook):
     def __init__(self, plugin, key_index: int):
         super().__init__(plugin)
         self.key_index = key_index
@@ -39,5 +39,5 @@ class ProfileActionsHook(BaseHook):
 def register_profile_actions(plugin) -> None:
     ProfileActionsView = find_class("org.telegram.ui.Components.ProfileActionsView")
     if ProfileActionsView:
-        plugin.hook_all_methods(ProfileActionsView, "set", ProfileActionsHook(plugin, 0))
-        plugin.hook_all_methods(ProfileActionsView, "getOrCreate", ProfileActionsHook(plugin, 1))
+        plugin.hook_all_methods(ProfileActionsView, "set", ProfileActionsViewHook(plugin, 0))
+        plugin.hook_all_methods(ProfileActionsView, "getOrCreate", ProfileActionsViewHook(plugin, 1))
