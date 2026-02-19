@@ -1,39 +1,60 @@
-from typing import Any
-
-from base_plugin import MethodHook
 from hook_utils import find_class, get_private_field, set_private_field
 from java import jint
 from ui.bulletin import BulletinHelper
 
 from LegacyGram.data.constants import Keys
+from LegacyGram.utils.xposed_utils import BaseHook
 
-# TODO: refactor
+"""
+EXPLANATION
+1. Get list of row field names to hide
+2. For each row to hide:
+    Set its index to -1
+    Decrement all row indices that come after it
+3. Update total row count
+"""
+
+# from ProfileActivity Class
+ROW_FIELDS = [
+    "premiumRow",
+    "starsRow",
+    "tonRow",
+    "businessRow",
+    "premiumGiftingRow",
+]
+
+# when all rows hidden, there's are invisible "header"
+PREMIUM_SECTIONS_ROW = "premiumSectionsRow"
 
 
-class SettingsMenuCleanupHook(MethodHook):
-    def __init__(self, plugin):
-        self.plugin = plugin
-
-    def check_settings(self) -> list[Any]:
+class ProfileActivityUpdateRowsIdsHook(BaseHook):
+    def get_rows_to_remove(self) -> list[str]:
         rows_to_remove = []
-        if self.plugin.get_setting(Keys.General.hide_premium_row, False):
-            rows_to_remove.append("premiumRow")
-        if self.plugin.get_setting(Keys.General.hide_stars_row, False):
-            rows_to_remove.append("starsRow")
-        if self.plugin.get_setting(Keys.General.hide_ton_row, False):
-            rows_to_remove.append("tonRow")
-        if self.plugin.get_setting(Keys.General.hide_business_row, False):
-            rows_to_remove.append("businessRow")
-        if self.plugin.get_setting(Keys.General.hide_send_a_gift_row, False):
-            rows_to_remove.append("premiumGiftingRow")
-        if len(rows_to_remove) == 5:
-            rows_to_remove.append("premiumSectionsRow")
+
+        setting_keys = [
+            Keys.General.hide_premium_row,
+            Keys.General.hide_stars_row,
+            Keys.General.hide_ton_row,
+            Keys.General.hide_business_row,
+            Keys.General.hide_send_a_gift_row,
+        ]
+
+        for key in setting_keys:
+            if self.plugin.get_setting(key, False):
+                rows_to_remove.append(ROW_FIELDS[setting_keys.index(key)])
+
+        # if all is hide -> also remove header
+        if len(rows_to_remove) == len(ROW_FIELDS):
+            rows_to_remove.append(PREMIUM_SECTIONS_ROW)
+
         return rows_to_remove
 
-    # TODO comment this
     def after_hooked_method(self, param):
         activity = param.thisObject
-        rows_to_remove = self.check_settings()
+        rows_to_remove = self.get_rows_to_remove()
+
+        if not rows_to_remove:
+            return
 
         try:
             row_count = get_private_field(activity, "rowCount")
@@ -78,4 +99,4 @@ class SettingsMenuCleanupHook(MethodHook):
 def register_settings_menu(plugin) -> None:
     ProfileActivityClass = find_class("org.telegram.ui.ProfileActivity")
     if ProfileActivityClass:
-        plugin.hook_all_methods(ProfileActivityClass, "updateRowsIds", SettingsMenuCleanupHook(plugin))
+        plugin.hook_all_methods(ProfileActivityClass, "updateRowsIds", ProfileActivityUpdateRowsIdsHook(plugin))
