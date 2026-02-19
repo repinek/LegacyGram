@@ -1,6 +1,6 @@
 __name__ = "LegacyGram"
 __description__ = "A highly customizable plugin to remove paid and bloated features from Telegram"
-__version__ = "0.0.12"
+__version__ = "0.1.16"
 __id__ = "legacygram"
 __author__ = "@wepinek"
 __icon__ = "LegacyGram/0"
@@ -16,9 +16,10 @@ rename all classes
 boost stuff
 
 project stuff TODO:
-version stuff in toml (building)
+none
 
 DONE:
+version stuff in toml (building)
 build .plugin
 localization (normal eng and ru)
 remove gift button in profile

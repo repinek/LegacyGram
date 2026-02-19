@@ -5,8 +5,6 @@ import sys
 from collections import defaultdict
 from pathlib import Path
 
-# TODO uv version <version from header>
-
 """
 I don't love using vars like: a b c
 but it's really needed here
@@ -19,6 +17,7 @@ pd - priority dir
 DIST_DIR = Path("dist")
 OUTPUT_FILENAME = "LegacyGram.plugin"
 SRC_DIR = Path("LegacyGram")
+HEADER_FILE = SRC_DIR / "header.py"
 
 PRIORITY_FILES = ["header.py"]
 PRIORITY_DIRS = ["data", "i18n", "utils"]
@@ -33,6 +32,33 @@ COPYRIGHT_STRING = (
 
 captured_imports = defaultdict(set)
 captured_from_imports = defaultdict(set)
+
+
+def get_current_version() -> tuple[int, int, int] | None:
+    content = HEADER_FILE.read_text(encoding="utf-8")
+    match = re.search(r'__version__\s*=\s*"(\d+)\.(\d+)\.(\d+)"', content)
+    if match:
+        return int(match.group(1)), int(match.group(2)), int(match.group(3))
+    print("❌ Error: Can't find version!")
+    return None
+
+
+def increment_build_version(current_version: tuple[int, int, int]) -> str:
+    major, minor, build = current_version
+    new_version = (major, minor, build + 1)
+
+    version_str = f"{new_version[0]}.{new_version[1]}.{new_version[2]}"
+
+    # Update header.py
+    content = HEADER_FILE.read_text(encoding="utf-8")
+    content = re.sub(
+        r'__version__\s*=\s*"[^"]+"',
+        f'__version__ = "{version_str}"',
+        content,
+    )
+    HEADER_FILE.write_text(content, encoding="utf-8")
+
+    return version_str
 
 
 def run_linter():
@@ -158,6 +184,18 @@ def build():
     if not SRC_DIR.exists():
         print(f"❌ Error: Source directory '{SRC_DIR}' not found!")
         return
+
+    if not HEADER_FILE.exists():
+        print(f"❌ Error: Header file '{HEADER_FILE}' not found!")
+        return
+
+    current_version = get_current_version()
+    if not current_version:
+        print("❌ Error: Can't find __version__ field in header!")
+        return
+
+    new_version = increment_build_version(current_version)
+    print(f"📌 Version: {new_version}")
 
     if not run_linter():
         sys.exit(1)
