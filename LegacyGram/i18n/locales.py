@@ -49,7 +49,7 @@ STRINGS = {
         "version_warn_title": "Потенциальная нестабильность",
         "version_warn_message": "Вы используете {0} с новым \"Liquid Glass UI\". "
                                 "Плагин сохраняет работоспособность, но рекомендуемая версия 12.1.1",
-        "github_repository": "Репозиторий на Github (Поставьте звезду!)",
+        "github_repository": "Репозиторий на Github (Поставьте ⭐!)",
         "github_sub": "Никакой телеметрии, Модульная архитектура на Python, кастомный скрипт для сборки, Ruff-линтинг и типизация для java и android модулей",
     },
     "en": {
@@ -101,7 +101,7 @@ STRINGS = {
         "version_warn_title": "Potential Instability",
         "version_warn_message": "You are using the client version {0} with new \"Liquid Glass UI\" integration. "
                                 "Plugin still works, but recommended version is 12.1.1",
-        "github_repository": "Github Repository (Leave a star!)",
+        "github_repository": "Github Repository (Leave a ⭐!)",
         "github_sub": "Zero Telemetry, Python modular architecture with custom build script, Ruff linting, and typing stubs for java and android modules",
     }
 }
