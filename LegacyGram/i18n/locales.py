@@ -35,11 +35,18 @@ STRINGS = {
         "profile_appearance": "Оформление профиля",
         "manage_reply_elements": "Настройка оформления ответов",
 
+        # --- Action Bar ---
+        "action_bar": "Три точки",
+        "hide_action_bar_live_stream": "Скрыть \"Начать трансляцию\" и \"Видеочат\"",
+        "hide_action_bar_archived_stories": "Скрыть \"Архив историй\"",
+        "hide_action_bar_send_gift": "Скрыть \"Отправить подарок\"",
+        "hide_action_bar_boost_group": "Скрыть \"Голоса\"",
+        "hide_action_bar_add_shortcut": "Скрыть \"Создать ярлык\"",
+
         # --- Gifts Related ---
         "gifts": "Подарки",
         "hide_bottom_gift_button": "Скрыть кнопку подарка в поле ввода",
         "hide_stars_rating": "Скрыть рейтинг звёзд",
-        "hide_action_bar_send_gift": "Скрыть \"Отправить подарок\" в тулбаре",
 
         # --- About Plugin ---
         "about_plugin": "О Плагине",
@@ -56,11 +63,11 @@ STRINGS = {
         # --- Settings Options ---
         "settings_options": "Settings Options",
         "switch_all": "Switch All",
-        "hide_premium_row": "Hide Telegram Premium",
-        "hide_stars_row": "Hide My Stars",
-        "hide_ton_row": "Hide My TON",
-        "hide_business_row": "Hide Telegram Business",
-        "hide_send_a_gift_row": "Hide Send a Gift",
+        "hide_premium_row": "Hide \"Telegram Premium\"",
+        "hide_stars_row": "Hide \"My Stars\"",
+        "hide_ton_row": "Hide \"My TON\"",
+        "hide_business_row": "Hide \"Telegram Business\"",
+        "hide_send_a_gift_row": "Hide \"Send a Gift\"",
 
         # --- Drawer Options ---
         "drawer_options": "Drawer Options",
@@ -87,11 +94,18 @@ STRINGS = {
         "profile_appearance": "Profile Appearance",
         "manage_reply_elements": "Manage Reply Elements",
 
+        # --- Action Bar ---
+        "action_bar": "Three dots",
+        "hide_action_bar_live_stream": "Hide \"Start Live Stream\" & \"Start Voice Chat\"",
+        "hide_action_bar_archived_stories": "Hide \"Archived Stories\"",
+        "hide_action_bar_send_gift": "Hide \"Send Gift\"",
+        "hide_action_bar_boost_group": "Hide \"Boost Group\"",
+        "hide_action_bar_add_shortcut": "Hide \"Add to Home Screen\"",
+
         # --- Gifts Related ---
         "gifts": "Gifts",
         "hide_bottom_gift_button": "Hide Gift Button from Input Field",
         "hide_stars_rating": "Hide Stars Rating",
-        "hide_action_bar_send_gift": "Hide Send Gift button from Action Bar",
 
         # --- About Plugin ---
         "about_plugin": "About Plugin",

@@ -38,11 +38,11 @@ def check_version(version: str) -> bool:
 def switch_rows(view: View) -> None:
     plugin_instance = LegacyGramPlugin.get_instance()
     row_keys = [
-        Keys.General.hide_premium_row,
-        Keys.General.hide_stars_row,
-        Keys.General.hide_ton_row,
-        Keys.General.hide_business_row,
-        Keys.General.hide_send_a_gift_row,
+        Keys.hide_premium_row,
+        Keys.hide_stars_row,
+        Keys.hide_ton_row,
+        Keys.hide_business_row,
+        Keys.hide_send_a_gift_row,
     ]
 
     any_disabled = any(not plugin_instance.get_setting(key, False) for key in row_keys)

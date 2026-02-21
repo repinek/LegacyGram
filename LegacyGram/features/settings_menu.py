@@ -32,11 +32,11 @@ class ProfileActivityUpdateRowsIdsHook(BaseHook):
         rows_to_remove = []
 
         setting_keys = [
-            Keys.General.hide_premium_row,
-            Keys.General.hide_stars_row,
-            Keys.General.hide_ton_row,
-            Keys.General.hide_business_row,
-            Keys.General.hide_send_a_gift_row,
+            Keys.hide_premium_row,
+            Keys.hide_stars_row,
+            Keys.hide_ton_row,
+            Keys.hide_business_row,
+            Keys.hide_send_a_gift_row,
         ]
 
         for key in setting_keys:

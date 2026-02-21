@@ -39,8 +39,8 @@ class SharedMediaLayoutHook(BaseHook):
             return chat_info, user_info
 
     def before_hooked_method(self, param) -> None:
-        hide_gifts = self.plugin.get_setting(Keys.Gifts.hide_gifts_tab, False)
-        hide_stories = self.plugin.get_setting(Keys.Premium.hide_stories_tab, False)
+        hide_gifts = self.plugin.get_setting(Keys.hide_gifts_tab, False)
+        hide_stories = self.plugin.get_setting(Keys.hide_stories_tab, False)
 
         if not hide_gifts and not hide_stories:
             return
@@ -100,11 +100,11 @@ def register_media_layout(plugin) -> None:
         update_tabs_hook = SharedMediaLayoutHook(plugin, is_constructor=False)
         plugin.hook_all_methods(SharedMediaLayout, "updateTabs", update_tabs_hook)
 
-        info_hook = SharedMediaLayoutSetInfoHook(plugin, Keys.Premium.hide_stories_tab)
+        info_hook = SharedMediaLayoutSetInfoHook(plugin, Keys.hide_stories_tab)
         plugin.hook_all_methods(SharedMediaLayout, "setChatInfo", info_hook)
         plugin.hook_all_methods(SharedMediaLayout, "setUserInfo", info_hook)
 
     ProfileStoriesCollectionTabs = find_class("org.telegram.ui.ProfileStoriesCollectionTabs")
     if ProfileStoriesCollectionTabs:
-        visibility_hook = ProfileStoriesCollectionTabsSetVisibilityHook(plugin, Keys.Premium.hide_stories_tab)
+        visibility_hook = ProfileStoriesCollectionTabsSetVisibilityHook(plugin, Keys.hide_stories_tab)
         plugin.hook_all_methods(ProfileStoriesCollectionTabs, "setVisibility", visibility_hook)

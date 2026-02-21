@@ -19,9 +19,9 @@ class ProfileActionsViewHook(BaseHook):
         self.key_index = key_index
 
     def before_hooked_method(self, param):
-        hide_gifts = self.plugin.get_setting(Keys.Gifts.hide_profile_actions_gift_button, False)
-        hide_stories = self.plugin.get_setting(Keys.Premium.hide_profile_actions_stories_button, False)
-        hide_stream = self.plugin.get_setting(Keys.General.hide_profile_actions_stream_button, False)
+        hide_gifts = self.plugin.get_setting(Keys.hide_profile_actions_gift_button, False)
+        hide_stories = self.plugin.get_setting(Keys.hide_profile_actions_stories_button, False)
+        hide_stream = self.plugin.get_setting(Keys.hide_profile_actions_stream_button, False)
 
         if not hide_gifts and not hide_stories and not hide_stream:
             return

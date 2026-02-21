@@ -1,6 +1,6 @@
 __name__ = "LegacyGram"
 __description__ = "A highly customizable plugin to remove paid and bloated features from Telegram"
-__version__ = "0.1.20"
+__version__ = "0.1.38"
 __id__ = "legacygram"
 __author__ = "@wepinek"
 __icon__ = "LegacyGram/0"
@@ -12,7 +12,7 @@ remove premium emoji in nickname
 remove profile colors in Profile (already implemented in replies via extera)
 remove some bulletins?
 take etg icon from current icon pack if exist (check for versions since here new icon pack system)
-boost stuff
+boost stuff (already removed boost group from action bar)
 
 project stuff TODO:
 none

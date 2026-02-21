@@ -4,26 +4,40 @@ GITHUB_URL = "https://github.com/repinek/LegacyGram"
 # Even though camelCase isn't like python
 # But it's looks overall better and etg uses the same format (consistency)
 class Keys:
-    class General:
-        switch_all = "switchAll"
-        hide_premium_row = "hidePremiumRow"
-        hide_stars_row = "hideStarsRow"
-        hide_ton_row = "hideTonRow"
-        hide_business_row = "hideBusinessRow"
-        hide_send_a_gift_row = "hideSendAGiftRow"
-        drawer_options = "drawerSettings"  # ETG
-        hide_profile_actions_stream_button = "hideProfileActionsStreamButton"
+    # --- Settings Options ---
+    switch_all = "switchAll"
+    hide_premium_row = "hidePremiumRow"
+    hide_stars_row = "hideStarsRow"
+    hide_ton_row = "hideTonRow"
+    hide_business_row = "hideBusinessRow"
+    hide_send_a_gift_row = "hideSendAGiftRow"
 
-    class Premium:
-        reply_elements = "replyElements"  # ETG
-        hide_stories = "hideStories"  # ETG
-        hide_action_bar_status = "hideActionBarStatus"  # ETG
-        hide_stories_tab = "hideStoriesTab"
-        hide_profile_actions_stories_button = "hideProfileActionsStoriesButton"
+    # --- Drawer Options ---
+    drawer_options = "drawerSettings"  # ETG
+    hide_profile_actions_stream_button = "hideProfileActionsStreamButton"
 
-    class Gifts:
-        hide_bottom_gift_button = "hideBottomGiftButton"
-        hide_gifts_tab = "hideGiftsTab"
-        hide_stars_rating = "hideStarsRating"
-        hide_action_bar_send_gift = "hideActionBarSendGift"
-        hide_profile_actions_gift_button = "hideProfileActionsGiftButton"
+    # --- Chat List ---
+    hide_stories = "hideStories"  # ETG
+    hide_action_bar_status = "hideActionBarStatus"  # ETG
+
+    # --- Profile Buttons ---
+    hide_profile_actions_stories_button = "hideProfileActionsStoriesButton"
+    hide_profile_actions_gift_button = "hideProfileActionsGiftButton"
+
+    # --- Profile Tabs ---
+    hide_stories_tab = "hideStoriesTab"
+    hide_gifts_tab = "hideGiftsTab"
+
+    # --- Profile Appearance ---
+    reply_elements = "replyElements"  # ETG
+
+    # --- Action Bar ---
+    hide_action_bar_live_stream = "hideActionBarLiveStream"
+    hide_action_bar_archived_stories = "hideActionBarArchivedStories"
+    hide_action_bar_send_gift = "hideActionBarSendGift"
+    hide_action_bar_boost_group = "hideActionBarBoostGroup"
+    hide_action_bar_add_shortcut = "hideActionBarAddShortcut"
+
+    # --- Gifts ---
+    hide_bottom_gift_button = "hideBottomGiftButton"
+    hide_stars_rating = "hideStarsRating"
