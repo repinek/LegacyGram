@@ -34,6 +34,7 @@ STRINGS = {
         # --- Profile Appearance ---
         "profile_appearance": "Оформление профиля",
         "manage_reply_elements": "Настройка оформления ответов",
+        "hide_boost_badge": "Скрыть значок буста",
 
         # --- Action Bar ---
         "action_bar": "Три точки",
@@ -93,6 +94,7 @@ STRINGS = {
         # --- Profile Appearance ---
         "profile_appearance": "Profile Appearance",
         "manage_reply_elements": "Manage Reply Elements",
+        "hide_boost_badge": "Hide Boost Badge",
 
         # --- Action Bar ---
         "action_bar": "Three dots",

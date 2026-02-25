@@ -4,6 +4,7 @@ from base_plugin import BasePlugin
 from ui.bulletin import BulletinHelper
 
 from LegacyGram.features.action_bar import register_action_bar
+from LegacyGram.features.boost_badge import register_boost_badge
 from LegacyGram.features.gift_button import register_gift_button
 from LegacyGram.features.media_layout import register_media_layout
 from LegacyGram.features.profile_actions import register_profile_actions
@@ -30,6 +31,7 @@ class LegacyGramPlugin(BasePlugin):
         register_settings_menu(self)
         register_gift_button(self)
         register_profile_actions(self)
+        register_boost_badge(self)
 
     @classmethod
     def get_instance(cls) -> "LegacyGramPlugin":

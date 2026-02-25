@@ -30,6 +30,7 @@ class Keys:
 
     # --- Profile Appearance ---
     reply_elements = "replyElements"  # ETG
+    hide_boost_badge = "hideBoostBadge"
 
     # --- Action Bar ---
     hide_action_bar_live_stream = "hideActionBarLiveStream"
