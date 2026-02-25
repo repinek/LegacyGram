@@ -33,9 +33,9 @@ class SharedMediaLayoutHook(BaseHook):
             return param.args[5], param.args[6]
         else:
             # updateTabs: info stored in instance fields
-            layout = param.thisObject
-            chat_info = get_private_field(layout, "info")
-            user_info = get_private_field(layout, "userInfo")
+            instance = param.thisObject
+            chat_info = get_private_field(instance, "info")
+            user_info = get_private_field(instance, "userInfo")
             return chat_info, user_info
 
     def before_hooked_method(self, param) -> None:

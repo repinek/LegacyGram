@@ -50,28 +50,28 @@ class ProfileActivityUpdateRowsIdsHook(BaseHook):
         return rows_to_remove
 
     def after_hooked_method(self, param):
-        activity = param.thisObject
+        instance = param.thisObject
         rows_to_remove = self.get_rows_to_remove()
 
         if not rows_to_remove:
             return
 
         try:
-            row_count = get_private_field(activity, "rowCount")
+            row_count = get_private_field(instance, "rowCount")
             if row_count is None:
                 return
 
-            cls = activity.getClass()
+            cls = instance.getClass()
             fields = cls.getDeclaredFields()
 
             rows_removed = 0
 
             for row_name in rows_to_remove:
-                target_index = get_private_field(activity, row_name)
+                target_index = get_private_field(instance, row_name)
 
                 if target_index is not None and target_index != -1:
                     rows_removed += 1
-                    set_private_field(activity, row_name, jint(-1))
+                    set_private_field(instance, row_name, jint(-1))
 
                     for field in fields:
                         if field.getType().toString() == "int":
@@ -81,16 +81,16 @@ class ProfileActivityUpdateRowsIdsHook(BaseHook):
                                 continue
 
                             try:
-                                current_val = field.getInt(activity)
+                                current_val = field.getInt(instance)
 
                                 if target_index < current_val < row_count:
-                                    field.setInt(activity, jint(current_val - 1))
+                                    field.setInt(instance, jint(current_val - 1))
                             except Exception:
                                 pass
                     row_count -= 1
 
             if rows_removed > 0:
-                set_private_field(activity, "rowCount", jint(row_count))
+                set_private_field(instance, "rowCount", jint(row_count))
 
         except Exception as e:
             BulletinHelper.show_error(f"Error in settings menu cleanup: {e}")
