@@ -19,7 +19,7 @@ class LegacyGramPlugin(BasePlugin):
     def on_plugin_load(self) -> None:
         LegacyGramPlugin._instance = self
         self.register_hooks()
-        BulletinHelper.show_info("LegacyGram loaded!")  # debug
+        BulletinHelper.show_success("LegacyGram loaded!")  # debug
 
     def create_settings(self) -> list[Any]:
         return get_main_settings_list()
