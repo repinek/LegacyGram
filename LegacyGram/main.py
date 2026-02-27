@@ -4,11 +4,10 @@ from base_plugin import BasePlugin
 from ui.bulletin import BulletinHelper
 
 from LegacyGram.features.action_bar import register_action_bar
-from LegacyGram.features.boost_badge import register_boost_badge
 from LegacyGram.features.gift_button import register_gift_button
 from LegacyGram.features.media_layout import register_media_layout
-from LegacyGram.features.profile_gifts import register_profile_gifts
 from LegacyGram.features.profile_actions import register_profile_actions
+from LegacyGram.features.profile_appearance import register_profile_appearance
 from LegacyGram.features.settings_menu import register_settings_menu
 from LegacyGram.features.star_rating import register_star_rating
 from LegacyGram.ui.settings import get_main_settings_list
@@ -31,9 +30,8 @@ class LegacyGramPlugin(BasePlugin):
         register_media_layout(self)
         register_settings_menu(self)
         register_gift_button(self)
+        register_profile_appearance(self)
         register_profile_actions(self)
-        register_boost_badge(self)
-        register_profile_gifts(self)
 
     @classmethod
     def get_instance(cls) -> "LegacyGramPlugin":

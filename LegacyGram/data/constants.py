@@ -30,7 +30,8 @@ class Keys:
 
     # --- Profile Appearance ---
     reply_elements = "replyElements"  # ETG
-    hide_pinned_gifts = "hidePinnedGifts"
+    hide_profile_background_emoji = "hideProfileBackgroundEmoji"
+    hide_profile_pinned_gifts = "hideProfilePinnedGifts"
     hide_boost_badge = "hideBoostBadge"
 
     # --- Action Bar ---

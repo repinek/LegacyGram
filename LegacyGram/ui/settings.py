@@ -43,7 +43,8 @@ def get_main_settings_list() -> list[Any]:
         #
         Header(text=t("profile_appearance")),
         Text(text=t("manage_reply_elements"), link_alias=Keys.reply_elements, on_click=open_extera_tab(Keys.reply_elements), icon="etg_settings"),
-        Switch(text=t("hide_pinned_gifts"), key=Keys.hide_pinned_gifts),
+        Switch(text=t("hide_profile_background_emoji"), subtext=t("hide_profile_background_emoji_sub"), key=Keys.hide_profile_background_emoji),
+        Switch(text=t("hide_profile_pinned_gifts"), key=Keys.hide_profile_pinned_gifts),
         Switch(text=t("hide_boost_badge"), key=Keys.hide_boost_badge),
         #
         Header(text=t("action_bar")),

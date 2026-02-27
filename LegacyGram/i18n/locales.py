@@ -34,7 +34,9 @@ STRINGS = {
         # --- Profile Appearance ---
         "profile_appearance": "Оформление профиля",
         "manage_reply_elements": "Настройка оформления ответов",
-        "hide_pinned_gifts": "Скрыть подарки вокруг аватара",
+        "hide_profile_background_emoji": "Скрыть фоновый эмодзи",
+        "hide_profile_background_emoji_sub": "Те, что вокруг аватара",
+        "hide_profile_pinned_gifts": "Скрыть подарки вокруг аватара",
         "hide_boost_badge": "Скрыть значок буста",
 
         # --- Action Bar ---
@@ -59,7 +61,7 @@ STRINGS = {
         "version_warn_message": "Вы используете {0} с новым \"Liquid Glass UI\". "
                                 "Плагин сохраняет работоспособность, но рекомендуемая версия 12.1.1",
         "github_repository": "Репозиторий на Github (Поставьте ⭐!)",
-        "github_sub": "Никакой телеметрии, Модульная архитектура на Python, кастомный скрипт для сборки, Ruff-линтинг и типизация для java и android модулей",
+        "github_sub": "Никакой телеметрии, модульная архитектура на Python, кастомный скрипт для сборки, Ruff-линтинг и типизация для java и android модулей",
     },
     "en": {
         # --- Settings Options ---
@@ -95,7 +97,9 @@ STRINGS = {
         # --- Profile Appearance ---
         "profile_appearance": "Profile Appearance",
         "manage_reply_elements": "Manage Reply Elements",
-        "hide_pinned_gifts": "Hide Gifts Around Avatar",
+        "hide_profile_background_emoji": "Hide Profile Icons",
+        "hide_profile_background_emoji_sub": "That ones around avatar",
+        "hide_profile_pinned_gifts": "Hide Gifts Around Avatar",
         "hide_boost_badge": "Hide Boost Badge",
 
         # --- Action Bar ---
