@@ -34,6 +34,7 @@ STRINGS = {
         # --- Profile Appearance ---
         "profile_appearance": "Оформление профиля",
         "manage_reply_elements": "Настройка оформления ответов",
+        "hide_pinned_gifts": "Скрыть подарки вокруг аватара",
         "hide_boost_badge": "Скрыть значок буста",
 
         # --- Action Bar ---
@@ -81,9 +82,9 @@ STRINGS = {
 
         # --- Profile Buttons ---
         "profile_buttons": "Profile Buttons",
-        "hide_profile_actions_gift_button": "Hide Gift button",
-        "hide_profile_actions_stories_button": "Hide Stories button",
-        "hide_profile_actions_stream_button": "Hide Live Stream & Video Chat button",
+        "hide_profile_actions_gift_button": "Hide Gift Button",
+        "hide_profile_actions_stories_button": "Hide Stories Button",
+        "hide_profile_actions_stream_button": "Hide Live Stream & Video Chat Button",
 
         # --- Profile Tabs ---
         "profile_tabs": "Profile Tabs",
@@ -94,6 +95,7 @@ STRINGS = {
         # --- Profile Appearance ---
         "profile_appearance": "Profile Appearance",
         "manage_reply_elements": "Manage Reply Elements",
+        "hide_pinned_gifts": "Hide Gifts Around Avatar",
         "hide_boost_badge": "Hide Boost Badge",
 
         # --- Action Bar ---
