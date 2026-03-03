@@ -64,6 +64,22 @@ class ChatMessageCellSetMessageObjectInternalHook(BaseHook):
             message_owner.from_boosts_applied = 0
 
 
+class MessagesControllerPeerColorFromCollectibleHook(BaseHook):
+    """
+    final MessagesController.PeerColor wasPeerColor = peerColor;
+    peerColor = MessagesController.PeerColor.fromCollectible(user.emoji_status);
+    if (peerColor == null) {
+        final int colorId = UserObject.getProfileColorId(user);
+        ...
+    }
+    """
+
+    def before_hooked_method(self, param):
+        if not self.is_enabled():
+            return
+        param.setResult(None)
+
+
 class UserObjectGetProfileColorIdHook(BaseHook):
     def before_hooked_method(self, param):
         if not self.is_enabled():
@@ -97,9 +113,13 @@ def register_profile_appearance(plugin) -> None:
         plugin.hook_all_methods(ChatMessageCell, "setMessageObjectInternal", ChatMessageCellSetMessageObjectInternalHook(plugin, Keys.hide_boost_badge))
 
     # Profile Colorful Background
+    MessagesController = find_class("org.telegram.messenger.MessagesController$PeerColor")
     UserObject = find_class("org.telegram.messenger.UserObject")
     ChatObject = find_class("org.telegram.messenger.ChatObject")
-
+    if MessagesController:
+        plugin.hook_all_methods(
+            MessagesController, "fromCollectible", MessagesControllerPeerColorFromCollectibleHook(plugin, Keys.hide_profile_colorful_background)
+        )
     if UserObject:
         plugin.hook_all_methods(UserObject, "getProfileColorId", UserObjectGetProfileColorIdHook(plugin, Keys.hide_profile_colorful_background))
     if ChatObject:
