@@ -48,7 +48,7 @@ def get_main_settings_list() -> list[Any]:
         Switch(text=t("hide_profile_colorful_background"), key=Keys.hide_profile_colorful_background),
         Switch(text=t("hide_boost_badge"), key=Keys.hide_boost_badge),
         Switch(text=t("hide_gift_hint"), key=Keys.hide_gift_hint),
-        Switch(text=t("hide_premium_badge"), subtext=t("TEMP_hide_premium_badge_sub"), key=Keys.hide_premium_badge),
+        Switch(text=t("hide_premium_badge"), subtext=t("hide_premium_badge_sub"), key=Keys.hide_premium_badge),
         #
         Header(text=t("action_bar")),
         Switch(text=t("hide_action_bar_live_stream"), key=Keys.hide_action_bar_live_stream),

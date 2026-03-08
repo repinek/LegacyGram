@@ -39,7 +39,8 @@ STRINGS = {
         "hide_profile_pinned_gifts": "Скрыть подарки вокруг аватара",
         "hide_profile_colorful_background": "Скрыть цветной фон",
         "hide_boost_badge": "Скрыть значок буста",
-        "hide_premium_badge": "TEMP: use eng",
+        "hide_premium_badge": "Скрыть премиум значок",
+        "hide_premium_badge_sub": "Также отключает видеоаватары в списке чатов и чате",
 
         # --- Action Bar ---
         "action_bar": "Три точки",
@@ -107,7 +108,7 @@ STRINGS = {
         "hide_profile_colorful_background": "Hide Colorful Background",
         "hide_boost_badge": "Hide Boost Badge",
         "hide_premium_badge": "Hide Premium Badge",
-        "TEMP_hide_premium_badge_sub": "REMOVES ONLY IN CHATS FOR NOW, HAS WIP EXTERABADGE SUPPORT",
+        "hide_premium_badge_sub": "Also disables video avatars in chat lists and chats",
 
         # --- Action Bar ---
         "action_bar": "Three dots",
