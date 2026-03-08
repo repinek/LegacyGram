@@ -10,8 +10,3 @@ class BaseHook(MethodHook):
         if not self.setting_key:
             return True
         return self.plugin.get_setting(self.setting_key, False)
-
-
-# class ReadArgsHook(MethodHook):
-#     def before_hooked_method(self, param):
-#         log(param.args)

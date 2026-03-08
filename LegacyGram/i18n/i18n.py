@@ -9,11 +9,10 @@ def get_system_language() -> str:
     global _Locale
     try:
         if _Locale is None:
-            _Locale = find_class("java.util.Locale")
-        if _Locale:
-            lang = _Locale.getDefault().getLanguage()
-            if lang in STRINGS:
-                return lang
+            _Locale = find_class("java.util.Locale")  # TODO FIX THIS OMG
+        lang = _Locale.getDefault().getLanguage()
+        if lang in STRINGS:
+            return lang
     except Exception:
         pass
 

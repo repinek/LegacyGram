@@ -149,12 +149,21 @@ def process_file_content(file_path: Path) -> list[str]:
 
     processed_lines = []
     in_docstring = False
-    docstring_char = '"""'
+    docstring_char = None
 
     for line in lines:
         stripped = line.strip()
 
-        if docstring_char in stripped:
+        # Check for docstring delimiters (both """ and ''')
+        if not in_docstring:
+            if stripped.startswith('"""'):
+                docstring_char = '"""'
+            elif stripped.startswith("'''"):
+                docstring_char = "'''"
+            else:
+                docstring_char = None
+
+        if docstring_char and docstring_char in stripped:
             count = stripped.count(docstring_char)
             if count == 1:
                 in_docstring = not in_docstring
@@ -164,9 +173,10 @@ def process_file_content(file_path: Path) -> list[str]:
                     continue
                 else:
                     in_docstring = False
+                    docstring_char = None
                     continue
 
-        # Skip if in docstrings """
+        # Skip if in docstrings
         if in_docstring:
             continue
 
