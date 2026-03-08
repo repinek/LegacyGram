@@ -38,7 +38,7 @@ class SharedMediaLayoutHook(BaseHook):
             user_info = get_private_field(instance, "userInfo")
             return chat_info, user_info
 
-    def before_hooked_method(self, param) -> None:
+    def before_hooked_method(self, param):
         hide_gifts = self.plugin.get_setting(Keys.hide_gifts_tab, False)
         hide_stories = self.plugin.get_setting(Keys.hide_stories_tab, False)
 
