@@ -13,6 +13,7 @@ dependencies = [
 [dependency-groups]
 dev = [
     "ruff>=0.15.0",
+    "ty>=0.0.21",
 ]
 
 [tool.ruff]
@@ -44,3 +45,15 @@ combine-as-imports = true
 [tool.ruff.format]
 quote-style = "double"
 indent-style = "space"
+
+[tool.ty.environment]
+extra-paths = ["./typings"]
+
+[tool.ty.analysis]
+allowed-unresolved-imports = [
+    "base_plugin",
+    "hook_utils",
+    "android_utils",
+    "client_utils",
+    "ui.**"
+]
