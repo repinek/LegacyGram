@@ -16,7 +16,9 @@ hasGifts = true AND (true AND false OR false) -> true AND (false) -> false -> ta
 Similar to gifts, we change 'stories_pinned_available' and 'stories' collection to prevent appearing tab.
 also we hook setChatInfo and setUserInfo which move you to stories tab sometimes
 ... .setInitialTabId(... ? TAB_ARCHIVED_STORIES : TAB_STORIES);
-for weird StoriesCollections logic we just set visibility to false (I'm lazy a little to check they logic, it's working fine)
+for weird StoriesCollections logic we just set visibility to false (I'm a little lazy to check they logic, it's working fine)
+
+Also code here is weird too
 """
 
 TL_profileTabGifts = find_class("org.telegram.tgnet.TLRPC$TL_profileTabGifts")

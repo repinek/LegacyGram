@@ -12,7 +12,7 @@ class ReactionsLayoutInBubbleSetMessageHook(BaseHook):
             return
 
         message_object = param.args[0]  # MessageObject messageObject
-        # MessageObject.TL_messageReactions.ArrayList<ReactionCount>
+        # MessageObject.TLRPC.Message.TL_messageReactions.ArrayList<ReactionCount>
         results = message_object.messageOwner.reactions.results
 
         to_remove = None

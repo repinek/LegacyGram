@@ -28,11 +28,13 @@ class ProfileActionsViewHook(BaseHook):
 
         current_key = param.args[self.key_index]
 
-        if (
+        should_hide = (
             (hide_gifts and current_key == KEY_GIFT)
             or (hide_stories and current_key == KEY_STORY)
             or (hide_stream and current_key in (KEY_VOICE_CHAT, KEY_STREAM))
-        ):
+        )
+
+        if should_hide:
             param.setResult(None)
 
 

@@ -4,7 +4,7 @@ from LegacyGram.data.constants import Keys
 from LegacyGram.utils.utils import get_client_version, parse_version
 from LegacyGram.utils.xposed_utils import BaseHook
 
-# public static final int BUTTON_GIFT = 1;
+# from ChatActivityChannelButtonsLayout Class
 BUTTON_GIFT = 1
 
 

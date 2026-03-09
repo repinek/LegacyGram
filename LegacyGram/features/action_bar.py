@@ -46,12 +46,14 @@ class ActionBarMenuItemAddSubItemHook(BaseHook):
         hide_archived_stories = self.plugin.get_setting(Keys.hide_action_bar_archived_stories, False)
         hide_add_shortcut = self.plugin.get_setting(Keys.hide_action_bar_add_shortcut, False)
 
-        if (
+        should_hide = (
             (hide_live_stream and item_id == CALL_ITEM)
             or (hide_send_gift and item_id == GIFT_PREMIUM)
             or (hide_archived_stories and item_id == CHANNEL_STORIES)
             or (hide_add_shortcut and item_id == ADD_SHORTCUT_PROFILE)
-        ):
+        )
+
+        if should_hide:
             result.setVisibility(View.GONE)
 
 
@@ -66,7 +68,9 @@ class ActionBarMenuItemLazilyAddSubItemHook(BaseHook):
         hide_add_shortcut = self.plugin.get_setting(Keys.hide_action_bar_add_shortcut, False)
         hide_boost_group = self.plugin.get_setting(Keys.hide_action_bar_boost_group, False)
 
-        if (hide_add_shortcut and item_id == ADD_SHORTCUT_CHAT) or (hide_boost_group and item_id == BOOST_GROUP):
+        should_hide = (hide_add_shortcut and item_id == ADD_SHORTCUT_CHAT) or (hide_boost_group and item_id == BOOST_GROUP)
+
+        if should_hide:
             result.setVisibility(View.GONE)
 
 
@@ -82,13 +86,15 @@ class ActionBarMenuItemSetSubItemShownHook(BaseHook):
         hide_add_shortcut = self.plugin.get_setting(Keys.hide_action_bar_add_shortcut, False)
         hide_boost_group = self.plugin.get_setting(Keys.hide_action_bar_boost_group, False)
 
-        if (
+        should_hide = (
             (hide_live_stream and item_id == CALL_ITEM)
             or (hide_send_gift and item_id == GIFT_PREMIUM)
             or (hide_archived_stories and item_id == CHANNEL_STORIES)
             or (hide_add_shortcut and item_id in (ADD_SHORTCUT_PROFILE, ADD_SHORTCUT_CHAT))
             or (hide_boost_group and item_id == BOOST_GROUP)
-        ):
+        )
+
+        if should_hide:
             param.args[1] = False  # boolean show
 
 

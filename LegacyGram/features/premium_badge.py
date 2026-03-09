@@ -23,24 +23,8 @@ DialogObject.GetEmojiStatusDocumentIdHook() has over than 52 calls
 Some Solution: instead remove premium badge in all places, just hook isPremiumUser
 
 If you want to go without isPremiumUser hook:
-class ProfileActivityGetEmojiStatusDrawableHook(BaseHook):
-    """Hide premium badge in Profile"""
-
-    def before_hooked_method(self, param):
-        if not self.is_enabled():
-            return
-
-        param.setResult(None)
-
-
-class ChatAvatarContainerSetTitleHook(BaseHook):
-    """Hide premium badge in chat header"""
-
-    def before_hooked_method(self, param):
-        if not self.is_enabled():
-            return
-
-        param.args[4] = False  # boolean premium
+hook ProfileActivityGetEmojiStatusDrawable for Hide Premium Badge in Profile (setResult(None) before_hooked)
+hook ChatAvatarContainerSetTitleHook for hide premium badge in chat header (param.args[4] = False before_hooked)
 '''
 
 

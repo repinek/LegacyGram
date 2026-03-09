@@ -72,14 +72,14 @@ class UserObjectGetProfileColorIdHook(BaseHook):
     def before_hooked_method(self, param):
         if not self.is_enabled():
             return
-        param.setResult(jint(-1))
+        param.setResult(jint(-1))  # Return -1 color id
 
 
 class ChatObjectGetProfileColorIdHook(BaseHook):
     def before_hooked_method(self, param):
         if not self.is_enabled():
             return
-        param.setResult(jint(-1))
+        param.setResult(jint(-1))  # Return -1 color id
 
 
 def register_profile_appearance(plugin) -> None:
