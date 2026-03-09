@@ -67,7 +67,7 @@ STRINGS = {
                                 "Плагин сохраняет работоспособность, но рекомендуемая версия 12.1.1. "
                                 "Если что-то не работает, напишите автору в ЛС или создайте issue на GitHub.",
         "github_repository": "Репозиторий на Github (Поставьте ⭐!)",
-        "github_sub": "Никакой телеметрии, модульная архитектура на Python, кастомный скрипт для сборки, Ruff-линтинг и типизация для java и android модулей",
+        "github_sub": "Никакой телеметрии, модульная архитектура на Python, кастомный скрипт для сборки, Ruff-линтинг и типизация для java, xposed и android модулей",
     },
     "en": {
         # --- Settings Options ---
@@ -136,7 +136,7 @@ STRINGS = {
                                 "Plugin still works, but recommended version is 12.1.1. "
                                 "If something doesn't work, please contact the author via DM or open an issue on GitHub.",
         "github_repository": "Github Repository (Leave a ⭐!)",
-        "github_sub": "Zero Telemetry, Python modular architecture with custom build script, Ruff linting, and typing stubs for java and android modules",
+        "github_sub": "Zero Telemetry, Python modular architecture with custom build script, Ruff linting, and typing stubs for java, xposed and android modules",
     }
 }
 # fmt: on
