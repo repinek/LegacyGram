@@ -60,6 +60,7 @@ def get_main_settings_list() -> list[Any]:
         Header(text=t("gifts")),
         Switch(text=t("hide_bottom_gift_button"), key=Keys.hide_bottom_gift_button),
         Switch(text=t("hide_stars_rating"), key=Keys.hide_stars_rating),
+        Switch(text=t("hide_star_reaction"), key=Keys.hide_star_reaction),
         #
         Header(text=t("about_plugin")),
         Text(text=t("client_version", get_client_version()), on_click=open_version_info(get_client_version()), red=is_version_text_red, icon="msg_help"),

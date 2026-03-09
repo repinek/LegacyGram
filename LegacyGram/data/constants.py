@@ -47,3 +47,4 @@ class Keys:
     # --- Gifts ---
     hide_bottom_gift_button = "hideBottomGiftButton"
     hide_stars_rating = "hideStarsRating"
+    hide_star_reaction = "hideStarReaction"
