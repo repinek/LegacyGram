@@ -109,6 +109,9 @@ class ChatMessageCellGetAuthorStatusHook(BaseHook):
         if current_user:
             if self._BadgesController is None:
                 self._BadgesController = find_class("com.exteragram.messenger.badges.BadgesController")
+
+            if not self._BadgesController:
+                return
             badge = self._BadgesController.INSTANCE.getBadge(current_user)
             param.setResult(badge)
         else:

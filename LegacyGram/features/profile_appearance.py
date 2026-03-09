@@ -54,11 +54,11 @@ class ChatMessageCellSetMessageObjectInternalHook(BaseHook):
         if not self.is_enabled():
             return
 
-        message_obj = param.args[0]
-        if message_obj is None:
+        message_object = param.args[0]  # MessageObject messageObject
+        if message_object is None:
             return
 
-        message_owner = get_private_field(message_obj, "messageOwner")
+        message_owner = get_private_field(message_object, "messageOwner")
 
         if message_owner is not None:
             message_owner.from_boosts_applied = 0

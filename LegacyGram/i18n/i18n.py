@@ -10,6 +10,10 @@ def get_system_language() -> str:
     try:
         if _Locale is None:
             _Locale = find_class("java.util.Locale")  # TODO FIX THIS OMG
+
+        if not _Locale:
+            return "en"
+
         lang = _Locale.getDefault().getLanguage()
         if lang in STRINGS:
             return lang

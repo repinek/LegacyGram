@@ -77,7 +77,7 @@ def remove_gifts(obj: Any):
     if obj:
         set_private_field(obj, "stargifts_count", jint(0))
         main_tab = get_private_field(obj, "main_tab")
-        if isinstance(main_tab, TL_profileTabGifts):
+        if isinstance(main_tab, TL_profileTabGifts):  # ty: ignore
             set_private_field(obj, "main_tab", None)
 
 
@@ -86,7 +86,7 @@ def remove_stories(obj: Any):
         set_private_field(obj, "stories_pinned_available", False)
         set_private_field(obj, "stories", None)
         main_tab = get_private_field(obj, "main_tab")
-        if isinstance(main_tab, TL_profileTabPosts):
+        if isinstance(main_tab, TL_profileTabPosts):  # ty: ignore
             set_private_field(obj, "main_tab", None)
 
 
