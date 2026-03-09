@@ -3,6 +3,8 @@ from hook_utils import find_class
 from LegacyGram.data.constants import Keys
 from LegacyGram.utils.xposed_utils import BaseHook
 
+TL_reactionPaid = find_class("org.telegram.tgnet.TLRPC$TL_reactionPaid")
+
 
 class ReactionsLayoutInBubbleSetMessageHook(BaseHook):
     def before_hooked_method(self, param):
@@ -18,9 +20,8 @@ class ReactionsLayoutInBubbleSetMessageHook(BaseHook):
         for i in range(results.size()):
             reaction_count = results.get(i)  # class ReactionCount
             reaction = reaction_count.reaction  # class Reaction
-            class_name = str(reaction.getClass().getName())  # org.telegram.tgnet.TLRPC$TL_reactionEmoji, reactionCustomEmoji, reactionEmpty or reactionPaid
-
-            if "reactionPaid" in class_name:
+            # org.telegram.tgnet.TLRPC$TL_reactionEmoji, reactionCustomEmoji, reactionEmpty or reactionPaid
+            if isinstance(reaction, TL_reactionPaid):  # ty: ignore
                 to_remove = reaction_count
                 break
 

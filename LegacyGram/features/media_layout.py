@@ -34,8 +34,8 @@ class SharedMediaLayoutHook(BaseHook):
         else:
             # updateTabs: info stored in instance fields
             instance = param.thisObject
-            chat_info = get_private_field(instance, "info")
-            user_info = get_private_field(instance, "userInfo")
+            chat_info = get_private_field(instance, "info")  # TLRPC.ChatFull
+            user_info = get_private_field(instance, "userInfo")  # TLRPC.UserFull
             return chat_info, user_info
 
     def before_hooked_method(self, param):
@@ -68,8 +68,7 @@ class ProfileStoriesCollectionTabsSetVisibilityHook(BaseHook):
     def before_hooked_method(self, param):
         if not self.is_enabled():
             return
-        # boolean visibility
-        if param.args[0] is True:
+        if param.args[0] is True:  # boolean visibility
             param.args[0] = False
 
 
@@ -77,6 +76,7 @@ def remove_gifts(obj: Any):
     if obj:
         set_private_field(obj, "stargifts_count", jint(0))
         main_tab = get_private_field(obj, "main_tab")
+
         if isinstance(main_tab, TL_profileTabGifts):  # ty: ignore
             set_private_field(obj, "main_tab", None)
 
@@ -86,11 +86,11 @@ def remove_stories(obj: Any):
         set_private_field(obj, "stories_pinned_available", False)
         set_private_field(obj, "stories", None)
         main_tab = get_private_field(obj, "main_tab")
+
         if isinstance(main_tab, TL_profileTabPosts):  # ty: ignore
             set_private_field(obj, "main_tab", None)
 
 
-# TODO: fix my profile (remove posts and archived posts)
 def register_media_layout(plugin) -> None:
     SharedMediaLayout = find_class("org.telegram.ui.Components.SharedMediaLayout")
     if SharedMediaLayout:

@@ -92,20 +92,16 @@ class ActionBarMenuItemSetSubItemShownHook(BaseHook):
             param.args[1] = False  # boolean show
 
 
-# hook ChatObject.isBoostSupported(chatLocal)
 class TopicsFragmentUpdateChatInfoHook(BaseHook):
     def after_hooked_method(self, param):
         if not self.is_enabled():
             return
 
         instance = param.thisObject
-        try:
-            boost_submenu_field = get_private_field(instance, "boostGroupSubmenu")
+        boost_submenu_field = get_private_field(instance, "boostGroupSubmenu")
 
-            if boost_submenu_field is not None:
-                boost_submenu_field.setVisibility(View.GONE)
-        except Exception:
-            pass
+        if boost_submenu_field is not None:
+            boost_submenu_field.setVisibility(View.GONE)
 
 
 def register_action_bar(plugin) -> None:

@@ -1,4 +1,4 @@
-from hook_utils import find_class, get_private_field
+from hook_utils import find_class
 from java import jint
 
 from LegacyGram.data.constants import Keys
@@ -31,16 +31,10 @@ class ProfileGiftsViewUpdateHook(BaseHook):
             return
 
         instance = param.thisObject
+        instance.gifts.clear()
 
-        try:
-            gifts = get_private_field(instance, "gifts")
-            if gifts is not None:
-                gifts.clear()
-
-                # redraw the view
-                instance.invalidate()
-        except Exception:
-            pass
+        # redraw the view
+        instance.invalidate()
 
 
 class ChatMessageCellSetMessageObjectInternalHook(BaseHook):
@@ -55,13 +49,7 @@ class ChatMessageCellSetMessageObjectInternalHook(BaseHook):
             return
 
         message_object = param.args[0]  # MessageObject messageObject
-        if message_object is None:
-            return
-
-        message_owner = get_private_field(message_object, "messageOwner")
-
-        if message_owner is not None:
-            message_owner.from_boosts_applied = 0
+        message_object.messageOwner.from_boosts_applied = 0
 
 
 class MessagesControllerPeerColorFromCollectibleHook(BaseHook):

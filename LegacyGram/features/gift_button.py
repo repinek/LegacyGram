@@ -8,27 +8,29 @@ from LegacyGram.utils.xposed_utils import BaseHook
 BUTTON_GIFT = 1
 
 
-class ProfileGiftButton(BaseHook):
+class ChatActivityEnterViewCreateGiftButtonHook(BaseHook):
     def before_hooked_method(self, param):
         if self.is_enabled():
             param.setResult(None)
 
 
-class ChannelGiftButton(BaseHook):
+class ChatActivityChannelButtonsLayoutShowButtonHook(BaseHook):
     def before_hooked_method(self, param):
         if self.is_enabled():
-            # showButton(final int buttonId
-            if param.args[0] == BUTTON_GIFT:
+            if param.args[0] == BUTTON_GIFT:  # final int buttonId
                 param.setResult(None)
 
 
 def register_gift_button(plugin) -> None:
     client_version = parse_version(get_client_version())
+
     ChatActivityEnterView = find_class("org.telegram.ui.Components.ChatActivityEnterView")
     if ChatActivityEnterView:
-        plugin.hook_all_methods(ChatActivityEnterView, "createGiftButton", ProfileGiftButton(plugin, Keys.hide_bottom_gift_button))
+        plugin.hook_all_methods(ChatActivityEnterView, "createGiftButton", ChatActivityEnterViewCreateGiftButtonHook(plugin, Keys.hide_bottom_gift_button))
 
     if client_version >= (12, 2, 3):  # TODO: check 12.2.3 version
         ChatActivityChannelButtonsLayout = find_class("org.telegram.ui.Components.chat.layouts.ChatActivityChannelButtonsLayout")
         if ChatActivityChannelButtonsLayout:
-            plugin.hook_all_methods(ChatActivityChannelButtonsLayout, "showButton", ChannelGiftButton(plugin, Keys.hide_bottom_gift_button))
+            plugin.hook_all_methods(
+                ChatActivityChannelButtonsLayout, "showButton", ChatActivityChannelButtonsLayoutShowButtonHook(plugin, Keys.hide_bottom_gift_button)
+            )

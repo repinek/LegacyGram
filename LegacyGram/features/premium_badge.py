@@ -112,6 +112,7 @@ class ChatMessageCellGetAuthorStatusHook(BaseHook):
 
             if not self._BadgesController:
                 return
+
             badge = self._BadgesController.INSTANCE.getBadge(current_user)
             param.setResult(badge)
         else:

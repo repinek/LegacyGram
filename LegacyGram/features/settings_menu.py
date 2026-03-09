@@ -1,5 +1,6 @@
 from hook_utils import find_class, get_private_field, set_private_field
 from java import jint
+from java.lang.reflect import Modifier
 
 from LegacyGram.data.constants import Keys
 from LegacyGram.utils.xposed_utils import BaseHook
@@ -49,50 +50,42 @@ class ProfileActivityUpdateRowsIdsHook(BaseHook):
         return rows_to_remove
 
     def after_hooked_method(self, param):
-        instance = param.thisObject
         rows_to_remove = self.get_rows_to_remove()
-
         if not rows_to_remove:
             return
 
-        try:
-            row_count = get_private_field(instance, "rowCount")
-            if row_count is None:
-                return
+        instance = param.thisObject
 
-            cls = instance.getClass()
-            fields = cls.getDeclaredFields()
+        row_count = get_private_field(instance, "rowCount")
+        if not isinstance(row_count, int):
+            return
 
-            rows_removed = 0
+        # Get all fields in ProfileActivity
+        fields = instance.getClass().getDeclaredFields()
+        valid_row_fields = []
+        for field in fields:
+            # only int, with "row" in lowercase name and not statics
+            if field.getType().toString() == "int" and "row" in field.getName().lower() and not (field.getModifiers() & Modifier.STATIC):
+                field.setAccessible(True)  # since all values is private
+                valid_row_fields.append(field)
 
-            for row_name in rows_to_remove:
-                target_index = get_private_field(instance, row_name)
+        rows_removed = 0
 
-                if target_index is not None and target_index != -1:
-                    rows_removed += 1
-                    set_private_field(instance, row_name, jint(-1))
+        for row_name in rows_to_remove:
+            target_index = get_private_field(instance, row_name)  # e.g private int premiumRow
+            if target_index is not None and target_index != -1:  # -1 not displayed
+                rows_removed += 1
+                set_private_field(instance, row_name, jint(-1))  # row will not be displayed, cuz set to 0. Instead, will be displayed versionRow
 
-                    for field in fields:
-                        if field.getType().toString() == "int":
-                            field.setAccessible(True)
+                for field in valid_row_fields:
+                    current_val = field.getInt(instance)
 
-                            if field.getModifiers() & 8:  # skip statics
-                                continue
+                    if target_index < current_val < row_count:
+                        field.setInt(instance, jint(current_val - 1))
 
-                            try:
-                                current_val = field.getInt(instance)
-
-                                if target_index < current_val < row_count:
-                                    field.setInt(instance, jint(current_val - 1))
-                            except Exception:
-                                pass
-                    row_count -= 1
-
-            if rows_removed > 0:
-                set_private_field(instance, "rowCount", jint(row_count))
-
-        except Exception:
-            pass
+                row_count -= 1
+        if rows_removed > 0:
+            set_private_field(instance, "rowCount", jint(row_count))
 
 
 def register_settings_menu(plugin) -> None:
