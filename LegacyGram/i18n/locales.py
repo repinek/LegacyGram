@@ -41,6 +41,7 @@ STRINGS = {
         "hide_boost_badge": "Скрыть значок буста",
         "hide_premium_badge": "Скрыть премиум значок",
         "hide_premium_badge_sub": "Также отключает видеоаватары в списке чатов и чате",
+        "hide_bot_verification": "Скрыть значок верификации от организации",
 
         # --- Action Bar ---
         "action_bar": "Три точки",
@@ -118,6 +119,7 @@ STRINGS = {
         "hide_boost_badge": "Hide Boost Badge",
         "hide_premium_badge": "Hide Premium Badge",
         "hide_premium_badge_sub": "Also disables video avatars in chat lists and chats",
+        "hide_bot_verification": "Hide Bot Verification Badge",
 
         # --- Action Bar ---
         "action_bar": "Three dots",

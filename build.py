@@ -1,7 +1,7 @@
+import argparse
 import re
 import subprocess
 import sys
-import argparse
 from collections import defaultdict
 from pathlib import Path
 
@@ -33,14 +33,12 @@ COPYRIGHT_STRING = (
 captured_imports = defaultdict(set)
 captured_from_imports = defaultdict(set)
 
+
 def parse_args():
     parser = argparse.ArgumentParser(description="LegacyGram Build Script")
-    parser.add_argument(
-        "--no-bump",
-        action="store_true",
-        help="Do not increment the build version"
-    )
+    parser.add_argument("--no-bump", action="store_true", help="Do not increment the build version")
     return parser.parse_args()
+
 
 def get_current_version() -> tuple[int, int, int] | None:
     content = HEADER_FILE.read_text(encoding="utf-8")

@@ -68,6 +68,7 @@ def get_main_settings_list() -> list[Any]:
         Switch(text=t("hide_boost_badge"), key=Keys.hide_boost_badge),
         Switch(text=t("hide_gift_hint"), key=Keys.hide_gift_hint),
         Switch(text=t("hide_premium_badge"), subtext=t("hide_premium_badge_sub"), on_change=show_restart_bulletin, key=Keys.hide_premium_badge),
+        Switch(text=t("hide_bot_verification"), key=Keys.hide_bot_verification),
     ]
 
     action_bar = [

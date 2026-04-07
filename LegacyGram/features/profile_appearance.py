@@ -1,4 +1,5 @@
-from hook_utils import find_class
+from de.robv.android.xposed import XC_MethodHook as XC_MethodHook
+from hook_utils import find_class, get_private_field
 from java import jint
 
 from LegacyGram.data.constants import Keys
@@ -82,6 +83,43 @@ class ChatObjectGetProfileColorIdHook(BaseHook):
         param.setResult(jint(-1))  # Return -1 color id
 
 
+class DialogObjectGetBotVerificationIconHook(BaseHook):
+    def before_hooked_method(self, param):
+        if not self.is_enabled():
+            return
+        param.setResult(0)  # Return no icon
+
+
+class DialogObjectGetBotVerificationHook(BaseHook):
+    def before_hooked_method(self, param):
+        if not self.is_enabled():
+            return
+        param.setResult(None)  # return .bot_verification is null
+
+
+class ProfileActivityGetBotVerificationDrawableHook(BaseHook):
+    def before_hooked_method(self, param):
+        if not self.is_enabled():
+            return
+        param.setResult(None)  # skip this method entirely
+
+
+class ChatActivityUpdateTopPanelHook(BaseHook):
+    """Remove a bot verification description in Top Panel by nullify bot_verification field"""
+
+    def before_hooked_method(self, param):
+        if not self.is_enabled():
+            return
+
+        instance = param.thisObject
+        user_info = get_private_field(instance, "userInfo")
+        chat_info = get_private_field(instance, "chatInfo")
+        if user_info:
+            user_info.bot_verification = None
+        if chat_info:
+            chat_info.bot_verification = None
+
+
 def register_profile_appearance(plugin) -> None:
     # Profile Background Emoji
     StarGiftPatterns = find_class("org.telegram.ui.Stars.StarGiftPatterns")
@@ -112,3 +150,17 @@ def register_profile_appearance(plugin) -> None:
         plugin.hook_all_methods(UserObject, "getProfileColorId", UserObjectGetProfileColorIdHook(plugin, Keys.hide_profile_colorful_background))
     if ChatObject:
         plugin.hook_all_methods(ChatObject, "getProfileColorId", ChatObjectGetProfileColorIdHook(plugin, Keys.hide_profile_colorful_background))
+
+    # Bot verification (Also see settings_menu UpdateRowsIds hook!)
+    DialogObject = find_class("org.telegram.messenger.DialogObject")
+    ProfileActivity = find_class("org.telegram.ui.ProfileActivity")
+    if DialogObject:
+        plugin.hook_all_methods(DialogObject, "getBotVerificationIcon", DialogObjectGetBotVerificationIconHook(plugin, Keys.hide_bot_verification))
+        plugin.hook_all_methods(DialogObject, "getBotVerification", DialogObjectGetBotVerificationHook(plugin, Keys.hide_bot_verification))
+    if ProfileActivity:
+        plugin.hook_all_methods(
+            ProfileActivity, "getBotVerificationDrawable", ProfileActivityGetBotVerificationDrawableHook(plugin, Keys.hide_bot_verification)
+        )
+    ChatActivity = find_class("org.telegram.ui.ChatActivity")
+    if ChatActivity:
+        plugin.hook_all_methods(ChatActivity, "updateTopPanelView", ChatActivityUpdateTopPanelHook(plugin, Keys.hide_bot_verification))

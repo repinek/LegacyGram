@@ -49,6 +49,19 @@ class ProfileActivityUpdateRowsIdsHook(BaseHook):
 
         return rows_to_remove
 
+    def before_hooked_method(self, param):
+        """Remove a bot verification description in Profile by nullify bot_verification field"""
+        if not self.plugin.get_setting(Keys.hide_bot_verification, False):
+            return
+
+        instance = param.thisObject
+        user_info = get_private_field(instance, "userInfo")
+        chat_info = get_private_field(instance, "chatInfo")
+        if user_info:
+            user_info.bot_verification = None
+        if chat_info:
+            chat_info.bot_verification = None
+
     def after_hooked_method(self, param):
         rows_to_remove = self.get_rows_to_remove()
         if not rows_to_remove:
