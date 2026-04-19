@@ -113,7 +113,7 @@ STRINGS = {
         "profile_appearance": "Profile Appearance",
         "manage_reply_elements": "Manage Reply Elements",
         "hide_profile_background_emoji": "Hide Profile Icons",
-        "hide_profile_background_emoji_sub": "That ones around avatar",
+        "hide_profile_background_emoji_sub": "Those around the avatar",
         "hide_profile_pinned_gifts": "Hide Gifts Around Avatar",
         "hide_profile_colorful_background": "Hide Colorful Background",
         "hide_boost_badge": "Hide Boost Badge",
