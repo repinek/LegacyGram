@@ -206,9 +206,14 @@ marimo/_static/
 marimo/_lsp/
 __marimo__/
 
-# Qwen Code
+# Qwen Code, Opencode
 QWEN.md
 .qwen/
+AGENTS.md
+opencode.json
 
 # LegacyGram
 versions/
+
+# Telegram Source Code
+Telegram/
