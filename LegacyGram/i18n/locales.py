@@ -18,6 +18,8 @@ STRINGS = {
         "chat_list": "Список чатов",
         "hide_stories": "Скрыть Истории",
         "hide_action_bar_status": "Скрыть статус",
+        "hide_greeting_button": "Скрыть промо Telegram Business в новых чатах",
+        "hide_greeting_button_sub": "Убирает кнопку с текстом \"имя установил(а) это сообщение для всех новых чатов\"",
 
         # --- Profile Buttons ---
         "profile_buttons": "Кнопки в профиле",
@@ -96,6 +98,8 @@ STRINGS = {
         "chat_list": "Chat List",
         "hide_stories": "Hide Stories",
         "hide_action_bar_status": "Hide Status",
+        "hide_greeting_button": "Hide Telegram Business Promo in Empty Chats",
+        "hide_greeting_button_sub": "Removes button with text \"name added the message above for all empty chats\"",
 
         # --- Profile Buttons ---
         "profile_buttons": "Profile Buttons",
@@ -147,7 +151,7 @@ STRINGS = {
                                 "If something doesn't work, please contact the author via DM or open an issue on GitHub.",
         "github_repository": "Github Repository (Leave a ⭐!)",
         "github_sub": "Zero Telemetry, Python modular architecture with custom build script, "
-                      "Ruff linting, and typing stubs for java, xposed and android modules",
+                      "Ruff linting, and typing stubs for java, Xposed and android modules",
 
         # --- Bulletins ---
         "restart_required": "Restart the app for changes to take effect.",

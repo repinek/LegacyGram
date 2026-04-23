@@ -5,6 +5,7 @@ from ui.bulletin import BulletinHelper
 
 from LegacyGram.features.action_bar import register_action_bar
 from LegacyGram.features.gift_button import register_gift_button
+from LegacyGram.features.greeting_button import register_greeting_button
 from LegacyGram.features.media_layout import register_media_layout
 from LegacyGram.features.premium_badge import register_premium_badge
 from LegacyGram.features.profile_actions import register_profile_actions
@@ -31,6 +32,7 @@ class LegacyGramPlugin(BasePlugin):
         register_media_layout(self)
         register_settings_menu(self)
         register_gift_button(self)
+        register_greeting_button(self)
         register_profile_appearance(self)
         register_profile_actions(self)
         register_premium_badge(self)

@@ -19,6 +19,7 @@ class Keys:
     # --- Chat List ---
     hide_stories = "hideStories"  # ETG
     hide_action_bar_status = "hideActionBarStatus"  # ETG
+    hide_greeting_button = "hideGreetingButton"
 
     # --- Profile Buttons ---
     hide_profile_actions_stories_button = "hideProfileActionsStoriesButton"

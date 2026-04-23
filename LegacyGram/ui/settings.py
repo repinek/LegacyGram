@@ -44,6 +44,7 @@ def get_main_settings_list() -> list[Any]:
             on_click=open_extera_tab(Keys.hide_action_bar_status),
             icon=extera_icon,
         ),
+        Switch(text=t("hide_greeting_button"), subtext=t("hide_greeting_button_sub"), key=Keys.hide_greeting_button),
     ]
 
     profile_buttons = [
