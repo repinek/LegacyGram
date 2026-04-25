@@ -39,7 +39,7 @@ uv run extera dist/LegacyGram.plugin # Runs a dev server
 │   ├── ui/                     # Settings UI
 │   └── utils/                  # Helper functions
 │
-├── typings/                    # Typings stubs for java, xposed and android
+├── typings/                    # Typings stubs for java, xposed and android view
 │   ├── android/
 │   │   └── view/               
 │   ├── de/
@@ -49,6 +49,9 @@ uv run extera dist/LegacyGram.plugin # Runs a dev server
 │   └── java/
 │       └── lang/
 │           └── reflect/
+│
+├── assets/                     # Assets
+│   └── sticker.webp            # Source for __icon__
 │
 ├── build.py                    # Plugin Build Script
 ├── pyproject.toml              # Project Configuration File
@@ -93,6 +96,10 @@ The project includes `typings/` directory with stubs for:
 - Java standard library
 - Chaquopy Python-to-Java bridge
 
+### Plugin icon
+> `__icon__` uses the format `StickerPackShortName/index`, for example `exteraPlugins/1`.
+
+The current icon is `LegacyGram/0`. If anything happens with sticker pack, a local copy is stored in `assets/sticker.webp`.
 
 ## Building
 ```bash
