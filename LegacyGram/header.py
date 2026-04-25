@@ -1,6 +1,6 @@
 __name__ = "LegacyGram"
 __description__ = "A highly customizable plugin to **remove paid and bloated features** from Telegram.\n**Recommended version:** 12.1.1"
-__version__ = "1.1.2"
+__version__ = "1.1.7"
 __id__ = "legacygram"
 __author__ = "@wepinek"
 __icon__ = "LegacyGram/0"

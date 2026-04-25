@@ -45,7 +45,6 @@ def get_current_version() -> tuple[int, int, int] | None:
     match = re.search(r'__version__\s*=\s*"(\d+)\.(\d+)\.(\d+)"', content)
     if match:
         return int(match.group(1)), int(match.group(2)), int(match.group(3))
-    print("❌ Error: Can't find version!")
     return None
 
 
