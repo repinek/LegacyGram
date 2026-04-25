@@ -36,38 +36,10 @@ Result of building will be saved at `dist/LegacyGram.plugin`
 
 ## Debugging & Development
 Refer to the [exteraGram plugins documentation](https://plugins.exteragram.app/docs/setup)
-
-Also Project includes a `typings/` directory with typings stubs for `android`, `xposed`, `java` and `Chaquopy Python API` 
+and [CONTRIBUTING](CONTRIBUTING.md)
 
 ## Contributing 
-Pull requests are welcome!
-
-## Project Structure
-```
-├── LegacyGram/
-│   ├── main.py                 # Entry Point
-│   ├── data/                   # Constants
-│   ├── features/               # Features by categories
-│   ├── i18n/                   # Internationalization system
-│   │   └── locales.py          # Localization
-│   ├── ui/                     # Settings UI
-│   └── utils/                  # Helper functions
-│
-├── typings/                    # Typings stubs for java, xposed and android
-│   ├── android/
-│   │   └── view/               
-│   ├── de/
-│   │   └── robv/
-│   │       └── android/
-│   │           └── xposed/
-│   └── java/
-│       └── lang/
-│           └── reflect/
-│
-├── build.py                    # Plugin Build Script
-├── pyproject.toml              # Project Configuration File
-└── uv.lock                     # lockfile for uv
-```
+Pull requests are welcome! 
 
 ## License 
 This project is licensed under the **MIT License**.  
